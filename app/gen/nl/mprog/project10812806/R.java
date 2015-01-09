@@ -1659,7 +1659,7 @@ containing a value of this type.
         public static final int bottom=0x7f09001e;
         public static final int button1=0x7f090045;
         public static final int button2=0x7f090042;
-        public static final int button3=0x7f090041;
+        public static final int button3=0x7f090044;
         public static final int button4=0x7f090049;
         public static final int button5=0x7f09004a;
         public static final int checkbox=0x7f09002b;
@@ -1678,7 +1678,7 @@ containing a value of this type.
         public static final int icon=0x7f090028;
         public static final int ifRoom=0x7f090016;
         public static final int image=0x7f090025;
-        public static final int imageView1=0x7f090044;
+        public static final int imageView1=0x7f090043;
         public static final int linearLayout1=0x7f090047;
         public static final int list2=0x7f090048;
         public static final int listMode=0x7f09000a;
@@ -1687,7 +1687,7 @@ containing a value of this type.
         public static final int never=0x7f090017;
         public static final int none=0x7f09000f;
         public static final int normal=0x7f09000b;
-        public static final int plantnaam=0x7f090043;
+        public static final int plantnaam=0x7f090041;
         public static final int progress_circular=0x7f090007;
         public static final int progress_horizontal=0x7f090008;
         public static final int radio=0x7f09002d;

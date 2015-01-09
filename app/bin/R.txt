@@ -357,7 +357,7 @@ int id beginning 0x7f09001b
 int id bottom 0x7f09001e
 int id button1 0x7f090045
 int id button2 0x7f090042
-int id button3 0x7f090041
+int id button3 0x7f090044
 int id button4 0x7f090049
 int id button5 0x7f09004a
 int id checkbox 0x7f09002b
@@ -376,7 +376,7 @@ int id homeAsUp 0x7f09000e
 int id icon 0x7f090028
 int id ifRoom 0x7f090016
 int id image 0x7f090025
-int id imageView1 0x7f090044
+int id imageView1 0x7f090043
 int id linearLayout1 0x7f090047
 int id list2 0x7f090048
 int id listMode 0x7f09000a
@@ -385,7 +385,7 @@ int id middle 0x7f09001d
 int id never 0x7f090017
 int id none 0x7f09000f
 int id normal 0x7f09000b
-int id plantnaam 0x7f090043
+int id plantnaam 0x7f090041
 int id progress_circular 0x7f090007
 int id progress_horizontal 0x7f090008
 int id radio 0x7f09002d

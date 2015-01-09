@@ -17,4 +17,9 @@ public class PlantActivity extends ActionBarActivity {
     	Intent intent = new Intent (this, WinkelwagenActivity.class);
     	startActivity(intent);
     	}
+	
+	public void startknop (View view) {
+    	Intent intent = new Intent (this, AssortimentActivity.class);
+    	startActivity(intent);
+    	}
 }
