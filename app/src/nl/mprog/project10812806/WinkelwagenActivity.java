@@ -1,18 +1,56 @@
+/* John Wesselingh project
+ * 10812806
+ * Het scherm waar de winkelwagen op te zien is. 
+ * De klant kan kiezen voor het plaatsen van een bestelling, teruggaan naar de lijst. 
+ * of de plant uit de winkelwagen halen.
+ */  
+
 package nl.mprog.project10812806;
 
-import android.support.v7.app.ActionBarActivity;
+import java.util.List;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
-public class WinkelwagenActivity extends ActionBarActivity {
+public class WinkelwagenActivity extends Activity {
 
+	private List<Product> mCartList;
+	private ProductAdapter mProductAdapter;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_winkelwagen);
+
+		mCartList = ShoppingCartHelper.getCartList();
+		
+		// Make sure to clear the selections
+		for(int i=0; i<mCartList.size(); i++) {
+			mCartList.get(i).selected = false;
+		}
+		
+		// Create the list
+		final ListView listViewCatalog = (ListView) findViewById(R.id.ListViewCatalog);
+		mProductAdapter = new ProductAdapter(mCartList, getLayoutInflater(), true);
+		listViewCatalog.setAdapter((ListAdapter) mProductAdapter);
+		
+		listViewCatalog.setOnItemClickListener(new OnItemClickListener() {
+			
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position,
+					long id) {
+				Intent productDetailsIntent = new Intent(getBaseContext(),PlantActivity.class);
+				productDetailsIntent.putExtra(ShoppingCartHelper.PRODUCT_INDEX, position);
+				startActivity(productDetailsIntent);
+			}
+		});
 	}
 
 	@Override
@@ -38,10 +76,13 @@ public class WinkelwagenActivity extends ActionBarActivity {
         }
 		return super.onOptionsItemSelected(item);
 	}
-	public void bestel (View view){
-		//TODO email methodes en rest komt waarschijnlijk in aparte class te staan, dit is alleen het knopje
-		Intent intent = new Intent (this, AssortimentActivity.class);
-    	startActivity(intent);
-	}
 	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		// Refresh the data
+		if(mProductAdapter != null) {
+			mProductAdapter.notifyDataSetChanged();
+		}
+	}
 }

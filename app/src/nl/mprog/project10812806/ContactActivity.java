@@ -1,3 +1,7 @@
+/* John Wesselingh project
+ * 10812806
+ * Contact activity: Schermpje met contactgegevens
+ */
 package nl.mprog.project10812806;
 
 import android.support.v7.app.ActionBarActivity;

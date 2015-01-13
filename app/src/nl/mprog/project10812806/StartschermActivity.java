@@ -1,3 +1,7 @@
+/* John Wesselingh project
+ * 10812806
+ * Het beginscherm van de app, hier gebeuren weinig spannende dingen.
+ */
 package nl.mprog.project10812806;
 
 import android.support.v7.app.ActionBarActivity;

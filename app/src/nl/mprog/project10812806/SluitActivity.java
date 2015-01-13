@@ -1,3 +1,7 @@
+/* John Wesselingh project
+ * 10812806
+ * Activity waar de klant bedankt wordt voor de bestelling.
+ */
 package nl.mprog.project10812806;
 
 import android.support.v7.app.ActionBarActivity;
