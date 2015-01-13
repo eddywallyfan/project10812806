@@ -9,16 +9,6 @@
     tools:context="nl.mprog.project10812806.StartschermActivity" 
     android:background="@drawable/wtm_logo">
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="59dp"
-        android:onClick="startknop"
-        android:text="@string/startknop" />
-
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -26,6 +16,29 @@
         android:layout_above="@+id/button1"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
-        android:text="@string/welkom" />
+        android:text="@string/welkom" 
+        android:textColor="#FFFFFF"/>
+
+    <Button
+        android:id="@+id/contactknop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="74dp"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/button1"
+        android:onClick="contact"
+        android:text="@string/contact" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/contactknop"
+        android:layout_alignBottom="@+id/contactknop"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="35dp"
+        android:onClick="startknop"
+        android:text="@string/startknop" />
 
 </RelativeLayout>

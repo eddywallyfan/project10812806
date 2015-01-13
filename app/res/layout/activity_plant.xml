@@ -1,54 +1,54 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	    xmlns:tools="http://schemas.android.com/tools"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
 	    android:padding="5dp"
 	    tools:context=".MainActivity" >
 	 
 	    <RelativeLayout
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
 	        android:layout_margin="5dp"
 	        android:padding="5dp" >
-	
-		<TextView
-		    android:id="@+id/plantnaam"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_alignParentTop="true"
-		    android:layout_centerHorizontal="true"
-		    android:layout_marginTop="30dp"
-		    android:text="@string/plant"
-		    android:textSize="35sp" />
 
-		<Button
-		    android:id="@+id/button2"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_below="@+id/plantnaam"
-		    android:layout_centerHorizontal="true"
-		    android:layout_marginTop="18dp"
-		    android:onClick="winkelwagen"
-		    android:text="@string/winkelwagen" />
+			<Button
+			    android:id="@+id/button3"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_alignBottom="@+id/imageView1"
+			    android:layout_centerHorizontal="true"
+			    android:layout_marginBottom="239dp"
+			    android:onClick="startknop"
+			    android:text="@string/terug" />
 
-		<Button
-		    android:id="@+id/button3"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_alignParentBottom="true"
-		    android:layout_centerHorizontal="true"
-		    android:layout_marginBottom="389dp"
-		    android:onClick="startknop"
-		    android:text="@string/terug" />
+			<TextView
+			    android:id="@+id/plantnaam"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_above="@+id/button3"
+			    android:layout_centerHorizontal="true"
+			    android:layout_marginBottom="184dp"
+			    android:text="@string/plant"
+			    android:textSize="35sp" />
 
-		<ImageView
-		    android:id="@+id/imageView1"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_alignParentTop="true"
-		    android:layout_centerHorizontal="true"
-		    android:contentDescription="@string/plant"
-		    android:src="@drawable/plant" />
+			<Button
+			    android:id="@+id/button2"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_above="@+id/button3"
+			    android:layout_alignRight="@+id/imageView1"
+			    android:layout_marginBottom="49dp"
+			    android:onClick="winkelwagen"
+			    android:text="@string/winkelwagen" />
+
+			<ImageView
+			    android:id="@+id/imageView1"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_alignParentLeft="true"
+			    android:layout_alignParentTop="true"
+			    android:contentDescription="@string/plant"
+			    android:src="@drawable/plant" />
 	
 	</RelativeLayout>
 </ScrollView>

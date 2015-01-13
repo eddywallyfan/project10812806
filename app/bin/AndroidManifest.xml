@@ -24,15 +24,23 @@
         </activity>
         <activity
             android:name=".AssortimentActivity"
-            android:label="@string/title_activity_assortiment" >
+            android:label="@string/startknop" >
         </activity>
         <activity
             android:name=".PlantActivity"
-            android:label="@string/title_activity_plant" >
+            android:label="@string/plant" >
         </activity>
         <activity
             android:name=".WinkelwagenActivity"
             android:label="@string/title_activity_winkelwagen" >
+        </activity>
+        <activity
+            android:name=".SluitActivity"
+            android:label="@string/title_activity_sluit" >
+        </activity>
+        <activity
+            android:name=".ContactActivity"
+            android:label="@string/contact" >
         </activity>
     </application>
 
