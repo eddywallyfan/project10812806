@@ -1798,6 +1798,8 @@ containing a value of this type.
         public static final int winkelwagen=0x7f0c0005;
     }
     public static final class string {
+        public static final int BekijkWinkelwagen=0x7f0a001f;
+        public static final int TekstvakAantal=0x7f0a001e;
         public static final int aantal=0x7f0a001c;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */

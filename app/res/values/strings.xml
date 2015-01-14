@@ -14,5 +14,9 @@
     <string name="search_hint">Zoek plant</string>
     <string name="contact">Contact</string>
     <string name="home">Home</string>
+    <string name="aantal">Aantal:</string>
+    <string name="soort">Soort:</string>
+    <string name="TekstvakAantal">Voer het gewenste aantal in</string>
+    <string name="BekijkWinkelwagen">Bekijk de winkelwagen</string>
 
 </resources>

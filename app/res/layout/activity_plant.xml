@@ -1,54 +1,91 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-	    xmlns:tools="http://schemas.android.com/tools"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:padding="5dp"
-	    tools:context=".MainActivity" >
-	 
-	    <RelativeLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    tools:context=".MainActivity" >
+ 
+	    <LinearLayout 
 	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_margin="5dp"
-	        android:padding="5dp" >
-
-			<Button
-			    android:id="@+id/button3"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignBottom="@+id/imageView1"
-			    android:layout_centerHorizontal="true"
-			    android:layout_marginBottom="239dp"
-			    android:onClick="startknop"
-			    android:text="@string/terug" />
-
-			<TextView
-			    android:id="@+id/plantnaam"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_above="@+id/button3"
-			    android:layout_centerHorizontal="true"
-			    android:layout_marginBottom="184dp"
-			    android:text="@string/plant"
-			    android:textSize="35sp" />
-
-			<Button
-			    android:id="@+id/button2"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_above="@+id/button3"
-			    android:layout_alignRight="@+id/imageView1"
-			    android:layout_marginBottom="49dp"
-			    android:onClick="winkelwagen"
-			    android:text="@string/winkelwagen" />
-
-			<ImageView
-			    android:id="@+id/imageView1"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentLeft="true"
-			    android:layout_alignParentTop="true"
+			android:layout_height="wrap_content" 
+			android:id="@+id/LinearLayoutHeader"
+			android:orientation="horizontal">
+		
+			<ImageView 
 			    android:contentDescription="@string/plant"
-			    android:src="@drawable/plant" />
-	
-	</RelativeLayout>
-</ScrollView>
+			    android:layout_width="wrap_content"
+				android:layout_height="wrap_content" 
+				android:id="@+id/ImageViewProduct"
+				android:adjustViewBounds="true" 
+				android:scaleType="fitXY"
+				android:src="@drawable/plant" 
+				android:layout_margin="5dp">
+			</ImageView>
+			
+			<TextView 
+			    android:layout_width="wrap_content"
+				android:layout_height="wrap_content" 
+				android:id="@+id/TextViewProductTitle"
+				android:layout_gravity="center" 
+				android:layout_margin="5dp"
+				android:textSize="26sp" 
+				android:text="@string/plant">		    
+			</TextView>
+		</LinearLayout>
+		
+		<TextView 
+		    android:layout_height="wrap_content" 
+		    android:id="@+id/TextViewProductDetails"
+			android:layout_width="fill_parent" 
+			android:layout_margin="5dp" 
+			android:text="@string/soort">
+		</TextView>
+		
+		<LinearLayout 
+		    android:layout_height="wrap_content"
+			android:layout_width="fill_parent" 
+			android:id="@+id/linearLayoutCurrentlyInCart">
+			
+			<TextView 
+			    android:id="@+id/textViewCurrentlyInCart"
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"
+				android:textSize="20sp"  
+				android:text="@string/plant"
+				android:layout_margin="5dp"></TextView>
+		</LinearLayout>
+		
+		<LinearLayout 
+		    android:layout_height="wrap_content"
+			android:layout_width="fill_parent" 
+			android:id="@+id/linearLayoutAddLayout"
+			android:orientation="horizontal" 
+			android:layout_margin="5dp">
+				
+				<TextView 
+				    android:id="@+id/textView1" 
+				    android:layout_width="wrap_content"
+					android:layout_height="wrap_content" 
+					android:text="@string/aantal">				    
+				</TextView>
+				
+				<EditText 
+				    android:layout_width="0dp"
+					android:layout_height="wrap_content" 
+					android:layout_weight="1"
+					android:text="@string/TekstvakAantal" 
+					android:gravity="right" 
+					android:id="@+id/editTextQuantity"
+					android:inputType="number">				    
+				</EditText>
+				
+				<Button 
+				    android:id="@+id/ButtonAddToCart"
+					android:layout_gravity="right" 
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content" 
+					android:text="@string/winkelwagen">				    
+				</Button>
+		</LinearLayout>
+</LinearLayout>
