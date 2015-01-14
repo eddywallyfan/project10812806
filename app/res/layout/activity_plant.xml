@@ -69,23 +69,25 @@
 					android:layout_height="wrap_content" 
 					android:text="@string/aantal">				    
 				</TextView>
-				
-				<EditText 
+
+				<EditText
+				    android:id="@+id/editTextQuantity"
 				    android:layout_width="0dp"
-					android:layout_height="wrap_content" 
-					android:layout_weight="1"
-					android:text="@string/TekstvakAantal" 
-					android:gravity="right" 
-					android:id="@+id/editTextQuantity"
-					android:inputType="number">				    
+				    android:layout_height="wrap_content"
+				    android:layout_weight="1"
+				    android:ems="10"
+				    android:gravity="right"
+				    android:inputType="number"
+				    android:text="@string/TekstvakAantal" >
+
 				</EditText>
-				
-				<Button 
-				    android:id="@+id/ButtonAddToCart"
-					android:layout_gravity="right" 
-					android:layout_height="wrap_content"
-					android:layout_width="wrap_content" 
-					android:text="@string/winkelwagen">				    
-				</Button>
+
 		</LinearLayout>
+
+		<Button
+		    android:id="@+id/ButtonAddToCart"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/winkelwagen" />
+
 </LinearLayout>

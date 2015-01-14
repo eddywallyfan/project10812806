@@ -1642,14 +1642,16 @@ containing a value of this type.
         public static final int Button02=0x7f090051;
         public static final int ButtonAddToCart=0x7f09004d;
         public static final int ButtonViewCart=0x7f090043;
-        public static final int ImageViewItem=0x7f090054;
+        public static final int EersteGebruikLayout=0x7f090052;
+        public static final int EersteGebruikTextView=0x7f090054;
+        public static final int ImageViewItem=0x7f090058;
         public static final int ImageViewProduct=0x7f090045;
         public static final int LinearLayoutCheckout=0x7f090050;
         public static final int LinearLayoutHeader=0x7f090044;
-        public static final int LinearLayoutItem=0x7f090052;
+        public static final int LinearLayoutItem=0x7f090056;
         public static final int ListViewCatalog=0x7f090042;
         public static final int TextView01=0x7f090041;
-        public static final int TextViewItem=0x7f090055;
+        public static final int TextViewItem=0x7f090059;
         public static final int TextViewProductDetails=0x7f090047;
         public static final int TextViewProductTitle=0x7f090046;
         public static final int action_bar=0x7f090033;
@@ -1666,14 +1668,13 @@ containing a value of this type.
         public static final int action_mode_bar_stub=0x7f09002f;
         public static final int action_mode_close_button=0x7f090022;
         public static final int activity_chooser_view_content=0x7f090023;
-        public static final int adapterTextView=0x7f090058;
         public static final int always=0x7f090014;
         public static final int beginning=0x7f09001b;
         public static final int bottom=0x7f09001e;
         public static final int button1=0x7f09004e;
         public static final int checkbox=0x7f09002b;
         public static final int collapseActionView=0x7f090015;
-        public static final int contact=0x7f090059;
+        public static final int contact=0x7f09005c;
         public static final int contactknop=0x7f09004f;
         public static final int decor_content_parent=0x7f090031;
         public static final int default_activity_button=0x7f090026;
@@ -1682,6 +1683,8 @@ containing a value of this type.
         public static final int dropdown=0x7f09001a;
         public static final int editTextQuantity=0x7f09004c;
         public static final int edit_query=0x7f090035;
+        public static final int editbedrijf=0x7f090053;
+        public static final int editmail=0x7f090055;
         public static final int end=0x7f09001c;
         public static final int expand_activities_button=0x7f090024;
         public static final int expanded_menu=0x7f09002a;
@@ -1692,8 +1695,8 @@ containing a value of this type.
         public static final int image=0x7f090025;
         public static final int linearLayoutAddLayout=0x7f09004a;
         public static final int linearLayoutCurrentlyInCart=0x7f090048;
-        public static final int linearLayoutDetails=0x7f090053;
-        public static final int linearLayoutQuantity=0x7f090056;
+        public static final int linearLayoutDetails=0x7f090057;
+        public static final int linearLayoutQuantity=0x7f09005a;
         public static final int listMode=0x7f09000a;
         public static final int list_item=0x7f090027;
         public static final int middle=0x7f09001d;
@@ -1722,7 +1725,7 @@ containing a value of this type.
         public static final int tabMode=0x7f09000c;
         public static final int textView1=0x7f09004b;
         public static final int textViewCurrentlyInCart=0x7f090049;
-        public static final int textViewQuantity=0x7f090057;
+        public static final int textViewQuantity=0x7f09005b;
         public static final int title=0x7f090029;
         public static final int top=0x7f09001f;
         public static final int up=0x7f090001;
@@ -1785,8 +1788,8 @@ containing a value of this type.
         public static final int activity_sluit=0x7f03001a;
         public static final int activity_startscherm=0x7f03001b;
         public static final int activity_winkelwagen=0x7f03001c;
-        public static final int item=0x7f03001d;
-        public static final int list_item=0x7f03001e;
+        public static final int eerste_gebruik=0x7f03001d;
+        public static final int item=0x7f03001e;
         public static final int support_simple_spinner_dropdown_item=0x7f03001f;
     }
     public static final class menu {
@@ -1856,9 +1859,12 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000d;
         public static final int app_name=0x7f0a000f;
         public static final int bedankt=0x7f0a0018;
+        public static final int bedrijf=0x7f0a0021;
         public static final int bestel=0x7f0a0016;
         public static final int contact=0x7f0a001a;
+        public static final int gegevens=0x7f0a0020;
         public static final int home=0x7f0a001b;
+        public static final int mail=0x7f0a0022;
         public static final int plant=0x7f0a0011;
         public static final int search_hint=0x7f0a0019;
         public static final int soort=0x7f0a001d;
