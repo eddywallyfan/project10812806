@@ -1,3 +1,7 @@
+/* John Wesselingh project
+ * 10812806
+ * Het mechaniek in het winkelwagentje
+ */
 package nl.mprog.project10812806;
 
 import java.util.HashMap;

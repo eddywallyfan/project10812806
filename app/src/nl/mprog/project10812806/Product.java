@@ -1,3 +1,7 @@
+/* John Wesselingh project
+ * 10812806
+ * Een class waarin het product omschreven wordt
+ */
 package nl.mprog.project10812806;
 
 import android.graphics.drawable.Drawable;

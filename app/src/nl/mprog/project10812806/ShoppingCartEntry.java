@@ -1,3 +1,7 @@
+/* John Wesselingh project
+ * 10812806
+ * Een class met methodes die in de winkelwagen gebruikt worden
+ */
 package nl.mprog.project10812806;
 
 public class ShoppingCartEntry {

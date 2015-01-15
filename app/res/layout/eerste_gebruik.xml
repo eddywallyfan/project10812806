@@ -5,13 +5,6 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/editbedrijf"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:inputType="number"
-        android:text="@string/bedrijf" />
-
     <TextView
         android:id="@+id/EersteGebruikTextView"
         android:layout_width="wrap_content"
@@ -19,14 +12,19 @@
         android:text="@string/gegevens" />
 
     <EditText
+        android:id="@+id/editbedrijf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:text="@string/bedrijf" />
+
+    <EditText
         android:id="@+id/editmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
-        android:text="@string/mail" >
-
-        <requestFocus />
-    </EditText>
+        android:text="@string/mail" />
 
 </LinearLayout>
