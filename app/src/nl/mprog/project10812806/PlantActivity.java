@@ -21,69 +21,33 @@ import android.widget.Toast;
 
 public class PlantActivity extends Activity {
 
+/*
+	// JSON node keys
+	private static final String TAG_PN = "plantnaam";
+	private static final String TAG_MAAT = "maatomschrijving";
+	private static final String TAG_AANTAL = "aantal";
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_plant);
-		
-		List<Product> catalog = ShoppingCartHelper.getCatalog(getResources());
-		int productIndex = getIntent().getExtras().getInt(
-				ShoppingCartHelper.PRODUCT_INDEX);
-		final Product selectedProduct = catalog.get(productIndex);
-		
-		// Set the proper image and text
-		ImageView productImageView = (ImageView) findViewById(R.id.ImageViewProduct);
-		productImageView.setImageDrawable(selectedProduct.productImage);
-		
-		TextView productTitleTextView = (TextView) findViewById(R.id.TextViewProductTitle);
-		productTitleTextView.setText(selectedProduct.title);
-		
-		TextView productDetailsTextView = (TextView) findViewById(R.id.TextViewProductDetails);
-		productDetailsTextView.setText(selectedProduct.description);
-		
-		
-		// Update the current quantity in the cart
-		TextView textViewCurrentQuantity = (TextView) findViewById(R.id.textViewCurrentlyInCart);
-		textViewCurrentQuantity.setText("Currently in Cart: "
-		+ ShoppingCartHelper.getProductQuantity(selectedProduct));
-		
-		// Save a reference to the quantity edit text
-		final EditText editTextQuantity = (EditText) findViewById(R.id.editTextQuantity);
-		
-		Button addToCartButton = (Button) findViewById(R.id.ButtonAddToCart);
-		addToCartButton.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// Check to see that a valid quantity was entered
-				int quantity = 0;
-				
-				try {
-					quantity = Integer.parseInt(editTextQuantity.getText()
-					.toString());
-					
-					if (quantity < 0) {
-						Toast.makeText(getBaseContext(),
-						"Please enter a quantity of 0 or higher",
-						Toast.LENGTH_SHORT).show();
-						return;
-					}
-				} 
-				
-				catch (Exception e) {
-					Toast.makeText(getBaseContext(),
-					"Please enter a numeric quantity",
-					Toast.LENGTH_SHORT).show();
-					return;
-				}
-				// If we make it here, a valid quantity was entered
-				ShoppingCartHelper.setQuantity(selectedProduct, quantity);
-				// Close the activity
-				finish();
-			}
-		});
+	public void onCreate(Bundle savedInstanceState) {
+	    super.onCreate(savedInstanceState);
+	    setContentView(R.layout.activity_plant);
 
-	}
+	    // getting intent data
+	    Intent in = getIntent();
+
+	    // Get JSON values from previous intent
+	    String naam = in.getStringExtra(TAG_PN);
+	    String maat = in.getStringExtra(TAG_MAAT);
+	    String aantal = in.getStringExtra(TAG_AANTAL);
+
+	    // Displaying all values on the screen
+	    TextView lblNaam = (TextView) findViewById(R.id.vers);
+	    TextView lblMaat = (TextView) findViewById(R.id.name);
+	    TextView lblAantal = (TextView) findViewById(R.id.api);
+
+	    lblNaam.setText(naam);
+	    lblMaat.setText(maat);
+	    lblAantal.setText(aantal);
+	} 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -107,13 +71,4 @@ public class PlantActivity extends Activity {
         }
 		return super.onOptionsItemSelected(item);
 	}
-	public void winkelwagen (View view) {
-    	Intent intent = new Intent (this, WinkelwagenActivity.class);
-    	startActivity(intent);
-    	}
-	
-	public void startknop (View view) {
-    	Intent intent = new Intent (this, AssortimentActivity.class);
-    	startActivity(intent);
-    	}
-}
+*/}
