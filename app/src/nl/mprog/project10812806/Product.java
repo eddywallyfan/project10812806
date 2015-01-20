@@ -20,6 +20,5 @@ public class Product {
 		this.productImage = productImage;
 		this.description = description;
 		this.price = price;
-
 	}
 }

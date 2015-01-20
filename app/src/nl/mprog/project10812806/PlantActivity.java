@@ -5,19 +5,13 @@
  */
 package nl.mprog.project10812806;
 
-import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class PlantActivity extends Activity {
 
@@ -47,11 +41,27 @@ public class PlantActivity extends Activity {
 	    lblNaam.setText(naam);
 	    lblMaat.setText(maat);
 	    lblAantal.setText(aantal);
+	    
+	    
+	    
 	} 
+	
+	public void putcart (View view){
+		String naam = TAG_PN;
+        String maat = TAG_MAAT;
+        String aantal = TAG_AANTAL;
+		
+		Intent intent = new Intent(this, ShoppingCartActivity.class);
+        intent.putExtra(TAG_PN, naam);
+        intent.putExtra(TAG_MAAT, maat);
+        intent.putExtra(TAG_AANTAL, aantal);
+        startActivity(intent);
+    }
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.winkelwagen, menu);
+		//getMenuInflater().inflate(R.menu.winkelwagen, menu);
 		return true;
 	}
 

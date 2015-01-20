@@ -21,5 +21,9 @@
     <string name="gegevens">Voer hier uw gegevens in</string>
     <string name="bedrijf">Bedrijfsnaam</string>
     <string name="mail">e-mail adres</string>
+    <string name="CD">Foto</string>
+    <string name="title_activity_shoppingcart">ShoppingcartActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

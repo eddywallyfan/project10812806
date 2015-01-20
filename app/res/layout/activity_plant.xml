@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:orientation="vertical"
@@ -6,88 +6,44 @@
     android:padding="5dp"
     tools:context=".MainActivity" >
  
-	    <LinearLayout 
-	        android:layout_width="wrap_content"
-			android:layout_height="wrap_content" 
-			android:id="@+id/LinearLayoutHeader"
-			android:orientation="horizontal">
-		
-			<ImageView 
-			    android:contentDescription="@string/plant"
-			    android:layout_width="wrap_content"
-				android:layout_height="wrap_content" 
-				android:id="@+id/ImageViewProduct"
-				android:adjustViewBounds="true" 
-				android:scaleType="fitXY"
-				android:src="@drawable/plant" 
-				android:layout_margin="5dp">
-			</ImageView>
-			
-			<TextView 
-			    android:layout_width="wrap_content"
-				android:layout_height="wrap_content" 
-				android:id="@+id/TextViewProductTitle"
-				android:layout_gravity="center" 
-				android:layout_margin="5dp"
-				android:textSize="26sp" 
-				android:text="@string/plant">		    
-			</TextView>
-		</LinearLayout>
-		
-		<TextView 
-		    android:layout_height="wrap_content" 
-		    android:id="@+id/TextViewProductDetails"
-			android:layout_width="fill_parent" 
-			android:layout_margin="5dp" 
-			android:text="@string/soort">
-		</TextView>
-		
-		<LinearLayout 
-		    android:layout_height="wrap_content"
-			android:layout_width="fill_parent" 
-			android:id="@+id/linearLayoutCurrentlyInCart">
-			
-			<TextView 
-			    android:id="@+id/textViewCurrentlyInCart"
-				android:layout_width="wrap_content" 
-				android:layout_height="wrap_content"
-				android:textSize="20sp"  
-				android:text="@string/plant"
-				android:layout_margin="5dp"></TextView>
-		</LinearLayout>
-		
-		<LinearLayout 
-		    android:layout_height="wrap_content"
-			android:layout_width="fill_parent" 
-			android:id="@+id/linearLayoutAddLayout"
-			android:orientation="horizontal" 
-			android:layout_margin="5dp">
-				
-				<TextView 
-				    android:id="@+id/textView1" 
-				    android:layout_width="wrap_content"
-					android:layout_height="wrap_content" 
-					android:text="@string/aantal">				    
-				</TextView>
+	<TextView
+        android:id="@+id/PlantNaam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"/>
 
-				<EditText
-				    android:id="@+id/editTextQuantity"
-				    android:layout_width="0dp"
-				    android:layout_height="wrap_content"
-				    android:layout_weight="1"
-				    android:ems="10"
-				    android:gravity="right"
-				    android:inputType="number"
-				    android:text="@string/TekstvakAantal" >
+    <TextView
+        android:id="@+id/PlantMaat"
+        android:layout_below="@id/PlantNaam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp" />
+    
+    <TextView
+        android:id="@+id/PlantAantal"
+        android:layout_toRightOf="@id/PlantMaat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp" />
+    
+    <Button
+        android:id="@+id/btnWagen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="56dp"
+        android:layout_marginRight="28dp"
+        android:onClick="putcart"
+        android:text="@string/winkelwagen" />
 
-				</EditText>
+    <EditText
+        android:id="@+id/aantaltxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnWagen"
+        android:layout_alignLeft="@+id/PlantMaat"
+        android:ems="10"
+        android:hint="@string/TekstvakAantal" />
 
-		</LinearLayout>
-
-		<Button
-		    android:id="@+id/ButtonAddToCart"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:text="@string/winkelwagen" />
-
-</LinearLayout>
+</RelativeLayout>

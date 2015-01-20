@@ -14,14 +14,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
-public class AssortimentActivity extends ListActivity {
+public class AssortimentActivity extends ListActivity implements OnItemClickListener{
 	
 	private static final String TAG = "hopsakee";
 	// Sla JSON nodes op in string
@@ -52,10 +58,9 @@ public class AssortimentActivity extends ListActivity {
 		}
         try {
 			JSONArray jsonArray = new JSONArray(answer);
-			//Log.i(TAG, "jsonarraylog"+jsonArray);
 			for(int i = 0; i<jsonArray.length();i++){
 				JSONObject plant = jsonArray.getJSONObject(i);
-				//Log.i(TAG, "plant1voor1: "+plant.getString("plantnaam"));
+
 				String plantnaam = plant.getString(TAG_PN);
 				String maat = plant.getString(TAG_MAAT);
 				String aantal = plant.getString(TAG_AANTAL);
@@ -77,13 +82,34 @@ public class AssortimentActivity extends ListActivity {
         ListAdapter adapter = new SimpleAdapter(this, plantList,
             	R.layout.list_item,
             new String[] { TAG_PN, TAG_MAAT, TAG_AANTAL}, new int[] {
-                    R.id.PlantNaam, R.id.PlantMaat, R.id.PlantAantal });
+                    R.id.PlantNaam, R.id.PlantMaat, R.id.PlantAantal 
+                    });
 
         setListAdapter(adapter);
     
-        //ListView lv = getListView();
+        ListView lv = getListView();   
+        lv.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+			    String naam = ((TextView) view.findViewById(R.id.PlantNaam)).getText().toString();
+	            String maat = ((TextView) view.findViewById(R.id.PlantMaat)).getText().toString();
+	            String aantal = ((TextView) view.findViewById(R.id.PlantAantal)).getText().toString();
+
+	            // Start activity
+	            Intent intent = new Intent(getApplicationContext(), PlantActivity.class);
+	            intent.putExtra(TAG_PN, naam);
+	            intent.putExtra(TAG_MAAT, maat);
+	            intent.putExtra(TAG_AANTAL, aantal);
+	            startActivity(intent);
+			}       	
+        });     
     }
     
+	
+	// Pak de URL en maak er een string van
     private class FetchItemsTask extends AsyncTask <Void, Void, String>{
     	@Override
     	protected String doInBackground(Void... string){
@@ -104,6 +130,14 @@ public class AssortimentActivity extends ListActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.winkelwagen, menu);
 		return true;
+	}
+
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		// TODO Auto-generated method stub
+		
 	}
     
 }
