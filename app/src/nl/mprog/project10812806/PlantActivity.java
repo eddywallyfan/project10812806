@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 public class PlantActivity extends Activity {
 
-/*
+
 	// JSON node keys
 	private static final String TAG_PN = "plantnaam";
 	private static final String TAG_MAAT = "maatomschrijving";
@@ -40,9 +40,9 @@ public class PlantActivity extends Activity {
 	    String aantal = in.getStringExtra(TAG_AANTAL);
 
 	    // Displaying all values on the screen
-	    TextView lblNaam = (TextView) findViewById(R.id.vers);
-	    TextView lblMaat = (TextView) findViewById(R.id.name);
-	    TextView lblAantal = (TextView) findViewById(R.id.api);
+	    TextView lblNaam = (TextView) findViewById(R.id.PlantNaam);
+	    TextView lblMaat = (TextView) findViewById(R.id.PlantMaat);
+	    TextView lblAantal = (TextView) findViewById(R.id.PlantAantal);
 
 	    lblNaam.setText(naam);
 	    lblMaat.setText(maat);
@@ -71,4 +71,4 @@ public class PlantActivity extends Activity {
         }
 		return super.onOptionsItemSelected(item);
 	}
-*/}
+}

@@ -4,131 +4,106 @@
  */
 package nl.mprog.project10812806;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-
-import nl.mprog.project10812806.CustomListAdapter;
-import nl.mprog.project10812806.AppController;
-import nl.mprog.project10812806.Movie;
+import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.app.ListActivity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.widget.ListView;
+import android.widget.ListAdapter;
+import android.widget.SimpleAdapter;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonArrayRequest;
-
-public class AssortimentActivity extends Activity {
-	// Log tag
-    private static final String TAG = AssortimentActivity.class.getSimpleName();
- 
-    // Movies json url
-    private static final String url = "http://api.androidhive.info/json/movies.json";
-    private ProgressDialog pDialog;
-    private List<Movie> movieList = new ArrayList<Movie>();
-    private ListView listView;
-    private CustomListAdapter adapter;
- 
-    @Override
+public class AssortimentActivity extends ListActivity {
+	
+	private static final String TAG = "hopsakee";
+	// Sla JSON nodes op in string
+	private static final String TAG_PN = "plantnaam";
+	private static final String TAG_MAAT = "maatomschrijving";
+	private static final String TAG_AANTAL = "qty";
+	private static final String TAG_FOTO = "foto";
+    
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assortiment);
- 
-        listView = (ListView) findViewById(R.id.list);
-        adapter = new CustomListAdapter(this, movieList);
-        listView.setAdapter(adapter);
- 
-        pDialog = new ProgressDialog(this);
-        // Showing progress dialog before making http request
-        pDialog.setMessage("Loading...");
-        pDialog.show();
- 
-        // changing action bar color
-       // getActionBar().setBackgroundDrawable(
-         //       new ColorDrawable(Color.parseColor("#1b1b1b")));
- 
-        // Creating volley request obj
-        JsonArrayRequest movieReq = new JsonArrayRequest(url,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Log.d(TAG, response.toString());
-                        hidePDialog();
- 
-                        // Parsing json
-                        for (int i = 0; i < response.length(); i++) {
-                            try {
- 
-                                JSONObject obj = response.getJSONObject(i);
-                                Movie movie = new Movie();
-                                movie.setTitle(obj.getString("title"));
-                                movie.setThumbnailUrl(obj.getString("image"));
-                                movie.setRating(((Number) obj.get("rating"))
-                                        .doubleValue());
-                                movie.setYear(obj.getInt("releaseYear"));
- 
-                                // Genre is json array
-                                JSONArray genreArry = obj.getJSONArray("genre");
-                                ArrayList<String> genre = new ArrayList<String>();
-                                for (int j = 0; j < genreArry.length(); j++) {
-                                    genre.add((String) genreArry.get(j));
-                                }
-                                movie.setGenre(genre);
- 
-                                // adding movie to movies array
-                                movieList.add(movie);
- 
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
- 
-                        }
- 
-                        // notifying list adapter about data changes
-                        // so that it renders the list view with updated data
-                        adapter.notifyDataSetChanged();
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        VolleyLog.d(TAG, "Error: " + error.getMessage());
-                        hidePDialog();
- 
-                    }
-                });
- 
-        // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(movieReq);
+
+        FetchItemsTask task = new FetchItemsTask();
+        task.execute();
+        String answer = "";
+        ArrayList<HashMap<String, String>> plantList = new ArrayList<HashMap<String, String>>();
+       
+        try {
+			answer = task.get();
+			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        try {
+			JSONArray jsonArray = new JSONArray(answer);
+			//Log.i(TAG, "jsonarraylog"+jsonArray);
+			for(int i = 0; i<jsonArray.length();i++){
+				JSONObject plant = jsonArray.getJSONObject(i);
+				//Log.i(TAG, "plant1voor1: "+plant.getString("plantnaam"));
+				String plantnaam = plant.getString(TAG_PN);
+				String maat = plant.getString(TAG_MAAT);
+				String aantal = plant.getString(TAG_AANTAL);
+				String foto = plant.getString(TAG_FOTO);
+				
+				// Maak hashmap
+				HashMap<String, String> map = new HashMap<String, String>();
+				map.put(TAG_PN, plantnaam);
+				map.put(TAG_MAAT, maat);
+				map.put(TAG_AANTAL, aantal);
+				map.put(TAG_FOTO, foto);
+				
+				plantList.add(map);
+			}
+		} catch (JSONException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        ListAdapter adapter = new SimpleAdapter(this, plantList,
+            	R.layout.list_item,
+            new String[] { TAG_PN, TAG_MAAT, TAG_AANTAL}, new int[] {
+                    R.id.PlantNaam, R.id.PlantMaat, R.id.PlantAantal });
+
+        setListAdapter(adapter);
+    
+        //ListView lv = getListView();
     }
- 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        hidePDialog();
+    
+    private class FetchItemsTask extends AsyncTask <Void, Void, String>{
+    	@Override
+    	protected String doInBackground(Void... string){
+    		try{
+    			String result = new UrlFetcher().getUrl("http://www.treecommerce.nl/stocklink/index.php?user=wtmdeboer&hash=cf07d18efe26f1461eb1a135cc8d08fe&lid=551534&fields=plantnaam%2cmaatomschrijving%2cqty%2cfoto&output=json");
+    			
+    			return result;
+    		} catch (IOException ioe){
+    			Log.e(TAG, "failed to fetch URL, ioe");
+    		}
+    		return null;
+    	}
     }
- 
-    private void hidePDialog() {
-        if (pDialog != null) {
-            pDialog.dismiss();
-            pDialog = null;
-        }
-    }
- 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.assortiment, menu);
-        return true;
-    }
+    
+    
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.winkelwagen, menu);
+		return true;
 	}
+    
+}
