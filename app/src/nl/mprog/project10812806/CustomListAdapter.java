@@ -1,7 +1,7 @@
 /*package nl.mprog.project10812806;
 
 import java.util.List;
-
+import nl.mprog.project10812806.AssortimentActivity;
 import com.squareup.picasso.Picasso;
 
 import android.content.Context;
@@ -42,11 +42,12 @@ public class CustomListAdapter extends ArrayAdapter<String>{
 
         final Product plant = getItem(position);
 
-        Picasso.with(getContext()).load(url.trim()).placeholder(R.drawable.no_thumb)
-        .into(poster);
+        Picasso.with(getContext()).load(TAG).placeholder(R.drawable.ic_action_search)
+        .into(T);
 
         holder.plantnaam.setText(plant.plantnaam);
-        holder.plantmaat.setText(plant.breeds.get(0));
+        holder.plantmaat.setText(plant.plantmaat);
+        holder.plantaantal.setText(plant.plantaantal);
 
         return v;
     }

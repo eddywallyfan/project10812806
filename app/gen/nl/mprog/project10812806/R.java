@@ -1644,13 +1644,17 @@ containing a value of this type.
         public static final int abc_textfield_search_activated_mtrl_alpha=0x7f020030;
         public static final int abc_textfield_search_default_mtrl_alpha=0x7f020031;
         public static final int abc_textfield_search_material=0x7f020032;
-        public static final int contact=0x7f020033;
-        public static final int ic_launcher=0x7f020034;
-        public static final int list_row_bg=0x7f020035;
-        public static final int list_row_bg_hover=0x7f020036;
-        public static final int list_row_selector=0x7f020037;
-        public static final int plant=0x7f020038;
-        public static final int wtm_logo=0x7f020039;
+        public static final int cart=0x7f020033;
+        public static final int contact=0x7f020034;
+        public static final int home=0x7f020035;
+        public static final int ic_action_phone=0x7f020036;
+        public static final int ic_action_search=0x7f020037;
+        public static final int ic_launcher=0x7f020038;
+        public static final int list_row_bg=0x7f020039;
+        public static final int list_row_bg_hover=0x7f02003a;
+        public static final int list_row_selector=0x7f02003b;
+        public static final int plant=0x7f02003c;
+        public static final int wtm_logo=0x7f02003d;
     }
     public static final class id {
         public static final int Button02=0x7f09004c;
@@ -1680,7 +1684,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f090030;
         public static final int action_mode_bar_stub=0x7f09002f;
         public static final int action_mode_close_button=0x7f090022;
-        public static final int action_settings=0x7f090059;
+        public static final int action_settings=0x7f09005a;
         public static final int activity_chooser_view_content=0x7f090023;
         public static final int always=0x7f090014;
         public static final int beginning=0x7f09001b;
@@ -1718,6 +1722,7 @@ containing a value of this type.
         public static final int progress_circular=0x7f090007;
         public static final int progress_horizontal=0x7f090008;
         public static final int radio=0x7f09002d;
+        public static final int search=0x7f090059;
         public static final int search_badge=0x7f090037;
         public static final int search_bar=0x7f090036;
         public static final int search_button=0x7f090038;

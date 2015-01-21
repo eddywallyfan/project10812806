@@ -35,6 +35,7 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 	private static final String TAG_MAAT = "maatomschrijving";
 	private static final String TAG_AANTAL = "qty";
 	private static final String TAG_FOTO = "foto";
+	private static final String TAG_OPM = "opm";
     
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,7 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 				String maat = plant.getString(TAG_MAAT);
 				String aantal = plant.getString(TAG_AANTAL);
 				String foto = plant.getString(TAG_FOTO);
+				String opm = plant.getString(TAG_OPM);
 				
 				// Maak hashmap
 				HashMap<String, String> map = new HashMap<String, String>();
@@ -72,6 +74,7 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 				map.put(TAG_MAAT, maat);
 				map.put(TAG_AANTAL, aantal);
 				map.put(TAG_FOTO, foto);
+				map.put(TAG_OPM, opm);
 				
 				plantList.add(map);
 			}
@@ -114,7 +117,7 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
     	@Override
     	protected String doInBackground(Void... string){
     		try{
-    			String result = new UrlFetcher().getUrl("http://www.treecommerce.nl/stocklink/index.php?user=wtmdeboer&hash=cf07d18efe26f1461eb1a135cc8d08fe&lid=551534&fields=plantnaam%2cmaatomschrijving%2cqty%2cfoto&output=json");
+    			String result = new UrlFetcher().getUrl("http://www.treecommerce.nl/stocklink/index.php?user=wtmdeboer&hash=cf07d18efe26f1461eb1a135cc8d08fe&lid=551534&fields=plantnaam%2cmaatomschrijving%2cqty%2cfoto%2copm&output=json");
     			
     			return result;
     		} catch (IOException ioe){
@@ -128,7 +131,7 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.winkelwagen, menu);
+		getMenuInflater().inflate(R.menu.assortiment, menu);
 		return true;
 	}
 

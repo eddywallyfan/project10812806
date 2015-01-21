@@ -42,15 +42,15 @@ public class PlantActivity extends Activity {
 	    lblMaat.setText(maat);
 	    lblAantal.setText(aantal);
 	    
-	    
+	   
 	    
 	} 
-	
-	public void putcart (View view){
-		String naam = TAG_PN;
-        String maat = TAG_MAAT;
-        String aantal = TAG_AANTAL;
 		
+	public void putcart (View view){	
+		String naam = ((TextView) view.findViewById(R.id.PlantNaam)).getText().toString();
+        String maat = ((TextView) view.findViewById(R.id.PlantMaat)).getText().toString();
+        String aantal = ((TextView) view.findViewById(R.id.PlantAantal)).getText().toString();
+        
 		Intent intent = new Intent(this, ShoppingCartActivity.class);
         intent.putExtra(TAG_PN, naam);
         intent.putExtra(TAG_MAAT, maat);
