@@ -1670,7 +1670,7 @@ containing a value of this type.
         public static final int PlantNaam=0x7f090041;
         public static final int TextView01=0x7f090049;
         public static final int TextViewItem=0x7f090054;
-        public static final int aantaltxt=0x7f090045;
+        public static final int aantaltxt=0x7f090044;
         public static final int action_bar=0x7f090033;
         public static final int action_bar_activity_content=0x7f090003;
         public static final int action_bar_container=0x7f090032;
@@ -1689,7 +1689,7 @@ containing a value of this type.
         public static final int always=0x7f090014;
         public static final int beginning=0x7f09001b;
         public static final int bottom=0x7f09001e;
-        public static final int btnWagen=0x7f090044;
+        public static final int btnWagen=0x7f090045;
         public static final int button1=0x7f090047;
         public static final int checkbox=0x7f09002b;
         public static final int collapseActionView=0x7f090015;

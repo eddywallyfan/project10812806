@@ -29,6 +29,7 @@ import android.widget.TextView;
 
 public class AssortimentActivity extends ListActivity implements OnItemClickListener{
 	
+	// Tag om te loggen
 	private static final String TAG = "hopsakee";
 	// Sla JSON nodes op in string
 	private static final String TAG_PN = "plantnaam";
@@ -41,10 +42,13 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assortiment);
-
+       
+        // Start een FetchItemsTask die een string maakt van de URL 
         FetchItemsTask task = new FetchItemsTask();
         task.execute();
         String answer = "";
+        
+        // Maak een arraylist waar de listview mee gevuld kan worden 
         ArrayList<HashMap<String, String>> plantList = new ArrayList<HashMap<String, String>>();
        
         try {
@@ -57,6 +61,8 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+        
+        // Maak een JSONArray van de string
         try {
 			JSONArray jsonArray = new JSONArray(answer);
 			for(int i = 0; i<jsonArray.length();i++){

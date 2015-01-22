@@ -11,10 +11,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class PlantActivity extends Activity {
-
+	Button button;
 
 	// JSON node keys
 	private static final String TAG_PN = "plantnaam";
@@ -25,15 +26,15 @@ public class PlantActivity extends Activity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_plant);
 
-	    // getting intent data
+	    // Vraag de intent op van de vorige activity
 	    Intent in = getIntent();
 
-	    // Get JSON values from previous intent
+	    // Vraag de JSON waardes op
 	    String naam = in.getStringExtra(TAG_PN);
 	    String maat = in.getStringExtra(TAG_MAAT);
 	    String aantal = in.getStringExtra(TAG_AANTAL);
 
-	    // Displaying all values on the screen
+	    // Zet de waardes in een textview
 	    TextView lblNaam = (TextView) findViewById(R.id.PlantNaam);
 	    TextView lblMaat = (TextView) findViewById(R.id.PlantMaat);
 	    TextView lblAantal = (TextView) findViewById(R.id.PlantAantal);
@@ -41,22 +42,16 @@ public class PlantActivity extends Activity {
 	    lblNaam.setText(naam);
 	    lblMaat.setText(maat);
 	    lblAantal.setText(aantal);
-	    
 	   
-	    
+				/*Intent in = getIntent();
+
+			    // Get JSON values from previous intent
+			    String naam = in.getStringExtra(TAG_PN);
+			    String maat = in.getStringExtra(TAG_MAAT);
+			    String aantal = in.getStringExtra(TAG_AANTAL);
+		        */
+
 	} 
-		
-	public void putcart (View view){	
-		String naam = ((TextView) view.findViewById(R.id.PlantNaam)).getText().toString();
-        String maat = ((TextView) view.findViewById(R.id.PlantMaat)).getText().toString();
-        String aantal = ((TextView) view.findViewById(R.id.PlantAantal)).getText().toString();
-        
-		Intent intent = new Intent(this, ShoppingCartActivity.class);
-        intent.putExtra(TAG_PN, naam);
-        intent.putExtra(TAG_MAAT, maat);
-        intent.putExtra(TAG_AANTAL, aantal);
-        startActivity(intent);
-    }
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
