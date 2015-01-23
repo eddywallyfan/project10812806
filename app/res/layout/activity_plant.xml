@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:textSize="12sp" />
     
-    <!--<Button
+    <Button
         android:id="@+id/btnWagen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,8 +34,9 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="56dp"
         android:layout_marginRight="28dp"
+        android:onClick="cartbtn"
         android:text="@string/winkelwagen" />
-	-->
+	
     <EditText
         android:id="@+id/aantaltxt"
         android:layout_width="wrap_content"

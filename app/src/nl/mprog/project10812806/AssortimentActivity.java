@@ -14,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.ListActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -82,12 +83,17 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 				map.put(TAG_FOTO, foto);
 				map.put(TAG_OPM, opm);
 				
+				
 				plantList.add(map);
 			}
 		} catch (JSONException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+        
+       // Context context = getBaseContext();
+		//ArrayList<HashMap<String, String>> map = null;
+		//CustomListAdapter adapter = new CustomListAdapter(context, map);
         ListAdapter adapter = new SimpleAdapter(this, plantList,
             	R.layout.list_item,
             new String[] { TAG_PN, TAG_MAAT, TAG_AANTAL}, new int[] {

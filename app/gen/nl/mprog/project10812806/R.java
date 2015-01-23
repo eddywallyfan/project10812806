@@ -1657,20 +1657,18 @@ containing a value of this type.
         public static final int wtm_logo=0x7f02003d;
     }
     public static final class id {
-        public static final int Button02=0x7f09004c;
         public static final int EersteGebruikLayout=0x7f09004d;
         public static final int EersteGebruikTextView=0x7f09004e;
         public static final int Image=0x7f090057;
         public static final int ImageViewItem=0x7f090053;
         public static final int LinearLayoutCheckout=0x7f09004b;
         public static final int LinearLayoutItem=0x7f090051;
-        public static final int ListViewCatalog=0x7f09004a;
         public static final int PlantAantal=0x7f090043;
         public static final int PlantMaat=0x7f090042;
         public static final int PlantNaam=0x7f090041;
         public static final int TextView01=0x7f090049;
         public static final int TextViewItem=0x7f090054;
-        public static final int aantaltxt=0x7f090044;
+        public static final int aantaltxt=0x7f090045;
         public static final int action_bar=0x7f090033;
         public static final int action_bar_activity_content=0x7f090003;
         public static final int action_bar_container=0x7f090032;
@@ -1689,8 +1687,9 @@ containing a value of this type.
         public static final int always=0x7f090014;
         public static final int beginning=0x7f09001b;
         public static final int bottom=0x7f09001e;
-        public static final int btnWagen=0x7f090045;
+        public static final int btnWagen=0x7f090044;
         public static final int button1=0x7f090047;
+        public static final int cart_list=0x7f09004a;
         public static final int checkbox=0x7f09002b;
         public static final int collapseActionView=0x7f090015;
         public static final int contact=0x7f090058;
@@ -1733,6 +1732,7 @@ containing a value of this type.
         public static final int search_plate=0x7f09003b;
         public static final int search_src_text=0x7f09003c;
         public static final int search_voice_btn=0x7f090040;
+        public static final int sendEmail=0x7f09004c;
         public static final int shortcut=0x7f09002c;
         public static final int showCustom=0x7f090010;
         public static final int showHome=0x7f090011;

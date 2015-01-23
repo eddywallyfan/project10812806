@@ -41,7 +41,7 @@
             android:label="@string/contact" >
         </activity>
         <activity
-            android:name=".ShoppingcartActivity"
+            android:name=".ShoppingCartActivity"
             android:label="@string/title_activity_shoppingcart" >
         </activity>
     </application>

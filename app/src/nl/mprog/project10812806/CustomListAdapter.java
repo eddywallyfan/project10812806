@@ -1,10 +1,13 @@
-/*package nl.mprog.project10812806;
+package nl.mprog.project10812806;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import nl.mprog.project10812806.AssortimentActivity;
 import com.squareup.picasso.Picasso;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,18 +16,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class CustomListAdapter extends ArrayAdapter<String>{
-	
+	private static final String TAG = "hoppa";
     private LayoutInflater mLayoutInflater;
+    ArrayList<HashMap<String, String>> plantList = new ArrayList<HashMap<String, String>>();
 
-	public CustomListAdapter(Context context, List<Plant> objects) {
-        super(context, 0, objects);
+	public CustomListAdapter(Context context, ArrayList<HashMap<String, String>> map) {
+        super(context, 0);
         mLayoutInflater = LayoutInflater.from(context);
+        this.plantList = map;
     }
 
-    @Override
+	@Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
         ViewHolder holder = null;
+        plantList.get(position);//.get(TAG_FOTO);
+        //Log.i(TAG, "position");
         if (v == null) {
             v = mLayoutInflater.inflate(R.layout.list_item, parent, false);
             holder = new ViewHolder();
@@ -34,21 +41,21 @@ public class CustomListAdapter extends ArrayAdapter<String>{
             holder.plantmaat = (TextView) v.findViewById(R.id.PlantMaat);
             holder.plantaantal = (TextView) v.findViewById(R.id.PlantAantal);
             
+            Picasso.with(getContext()).load(plantList.get(position).get("TAG_FOTO")).into(holder.image);
+
+          //  holder.plantnaam.setText(holder.plantnaam);
+           // holder.plantmaat.setText(holder.plantmaat);
+            //holder.plantaantal.setText(holder.plantaantal);
 
             v.setTag(holder);
         } else {
             holder = (ViewHolder) v.getTag();
         }
 
-        final Product plant = getItem(position);
-
-        Picasso.with(getContext()).load(TAG).placeholder(R.drawable.ic_action_search)
-        .into(T);
-
-        holder.plantnaam.setText(plant.plantnaam);
-        holder.plantmaat.setText(plant.plantmaat);
-        holder.plantaantal.setText(plant.plantaantal);
-
+     //   final Orderline plant = getItem(position);
+        
+        
+		
         return v;
     }
 
@@ -58,4 +65,4 @@ public class CustomListAdapter extends ArrayAdapter<String>{
         TextView plantmaat;
         TextView plantaantal;
     }
-}*/
+}

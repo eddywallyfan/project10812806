@@ -43,15 +43,30 @@ public class PlantActivity extends Activity {
 	    lblMaat.setText(maat);
 	    lblAantal.setText(aantal);
 	   
-				/*Intent in = getIntent();
-
-			    // Get JSON values from previous intent
-			    String naam = in.getStringExtra(TAG_PN);
-			    String maat = in.getStringExtra(TAG_MAAT);
-			    String aantal = in.getStringExtra(TAG_AANTAL);
-		        */
-
 	} 
+	
+	public void cartbtn (View view) {
+		Intent in = getIntent();
+
+	    // Vraag de JSON waardes op
+		String naam = in.getStringExtra(TAG_PN);
+	    String maat = in.getStringExtra(TAG_MAAT);
+	    String aantal = in.getStringExtra(TAG_AANTAL);
+	    
+	    // Maak een nieuwe orderline aan waar de geselecteerde waardes inkomen
+		Orderline orderline = new Orderline();
+		orderline.plant_naam = naam;
+		orderline.potmaat = maat;
+		orderline.aantal = aantal;
+		
+		// Voeg de orderline toe aan de totale order
+		Order order = Order.getInstance();
+		order.add(orderline);
+	    
+		// Start de volgende activity
+	    Intent intent = new Intent(getApplicationContext(), ShoppingCartActivity.class);
+        startActivity(intent);
+	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
