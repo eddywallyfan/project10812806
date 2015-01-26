@@ -1,46 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/EersteGebruikLayout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:background="@drawable/wtm_achtergrond" >
 
-    <TextView
+    <EditText
+        android:id="@+id/klant_factuur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/klant_telefoon"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:background="#EEEEEE"
+        android:hint="@string/factuur"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/klant_naam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/klant_factuur"
+        android:layout_alignLeft="@+id/klant_factuur"
+        android:layout_marginBottom="28dp"
+        android:ems="10"
+        android:background="#EEEEEE"
+        android:hint="@string/klantnaam"
+        android:inputType="text" />
+	
+	<TextView
         android:id="@+id/EersteGebruikTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:background="#EEEEEE"
         android:text="@string/gegevens" />
-
+    
+    <Button
+        android:id="@+id/btn_eerste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="btn_eerste"
+        android:text="@string/opslaan" />
+    
     <EditText
         android:id="@+id/editbedrijf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/klant_naam"
+        android:layout_alignLeft="@+id/klant_naam"
+        android:layout_marginBottom="31dp"
         android:ems="10"
-        android:inputType="number"
-        android:hint="@string/bedrijf" />
+        android:background="#EEEEEE"
+        android:hint="@string/bedrijf"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/klant_telefoon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editmail"
+        android:layout_below="@+id/klant_factuur"
+        android:layout_marginTop="38dp"
+        android:background="#EEEEEE"
+        android:ems="10"
+        android:hint="@string/telefoon"
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/editmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/klant_telefoon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="#EEEEEE"
         android:ems="10"
-        android:inputType="textEmailAddress"
-        android:hint="@string/mail" />
-    
-    <EditText
-        android:id="@+id/klant_naam"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="@string/mail" />
-    
-    <EditText
-        android:id="@+id/klant_telefoon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="@string/mail" />
+        android:hint="@string/mail"
+        android:inputType="textEmailAddress" >
 
-</LinearLayout>
+        <requestFocus />
+    </EditText>
+    
+</RelativeLayout>

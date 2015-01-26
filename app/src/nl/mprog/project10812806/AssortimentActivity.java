@@ -14,10 +14,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.ListActivity;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,11 +35,12 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 	
 	// Tag om te loggen
 	private static final String TAG = "hopsakee";
+	
 	// Sla JSON nodes op in string
 	private static final String TAG_PN = "plantnaam";
 	private static final String TAG_MAAT = "maatomschrijving";
-	private static final String TAG_AANTAL = "qty";
-	private static final String TAG_FOTO = "foto";
+	private static final String TAG_VOORRAAD = "qty";
+	public static final String TAG_FOTO = "foto";
 	private static final String TAG_OPM = "opm";
     
 	@Override
@@ -67,12 +70,13 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
         // Maak een JSONArray van de string
         try {
 			JSONArray jsonArray = new JSONArray(answer);
+			
 			for(int i = 0; i<jsonArray.length();i++){
 				JSONObject plant = jsonArray.getJSONObject(i);
 
 				String plantnaam = plant.getString(TAG_PN);
 				String maat = plant.getString(TAG_MAAT);
-				String aantal = plant.getString(TAG_AANTAL);
+				String voorraad = plant.getString(TAG_VOORRAAD);
 				String foto = plant.getString(TAG_FOTO);
 				String opm = plant.getString(TAG_OPM);
 				
@@ -80,27 +84,28 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 				HashMap<String, String> map = new HashMap<String, String>();
 				map.put(TAG_PN, plantnaam);
 				map.put(TAG_MAAT, maat);
-				map.put(TAG_AANTAL, aantal);
+				map.put(TAG_VOORRAAD, voorraad);
 				map.put(TAG_FOTO, foto);
 				map.put(TAG_OPM, opm);
-				
+			
 				
 				plantList.add(map);
+				//Log.i("joepi", "foutje"+ plantList);
 			}
 		} catch (JSONException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
         
-       // Context context = getBaseContext();
+        Context context = getBaseContext();
+        //Log.i("joepi", "foutje"+ context);
 		//ArrayList<HashMap<String, String>> map = null;
-		//CustomListAdapter adapter = new CustomListAdapter(context, map);
-        ListAdapter adapter = new SimpleAdapter(this, plantList,
+		CustomListAdapter adapter = new CustomListAdapter(context, R.layout.list_item, plantList);
+        /*ListAdapter adapter = new SimpleAdapter(this, plantList,
             	R.layout.list_item,
-            new String[] { TAG_PN, TAG_MAAT, TAG_AANTAL}, new int[] {
+            new String[] { TAG_PN, TAG_MAAT, TAG_VOORRAAD}, new int[] {
                     R.id.PlantNaam, R.id.PlantMaat, R.id.PlantAantal 
-                    });
-
+                    });*/
         setListAdapter(adapter);
     
         ListView lv = getListView();   
@@ -112,13 +117,13 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 				// TODO Auto-generated method stub
 			    String naam = ((TextView) view.findViewById(R.id.PlantNaam)).getText().toString();
 	            String maat = ((TextView) view.findViewById(R.id.PlantMaat)).getText().toString();
-	            String aantal = ((TextView) view.findViewById(R.id.PlantAantal)).getText().toString();
+	            String voorraad = ((TextView) view.findViewById(R.id.PlantAantal)).getText().toString();
 
 	            // Start activity
 	            Intent intent = new Intent(getApplicationContext(), PlantActivity.class);
 	            intent.putExtra(TAG_PN, naam);
 	            intent.putExtra(TAG_MAAT, maat);
-	            intent.putExtra(TAG_AANTAL, aantal);
+	            intent.putExtra(TAG_VOORRAAD, voorraad);
 	            startActivity(intent);
 			}       	
         });     
@@ -145,6 +150,15 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.assortiment, menu);
+		
+		// Associate searchable configuration with the SearchView
+	    SearchManager searchManager =
+	           (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+	    SearchView searchView =
+	            (SearchView) menu.findItem(R.id.search).getActionView();
+	    searchView.setSearchableInfo(
+	            searchManager.getSearchableInfo(getComponentName()));
+
 		return true;
 	}
 	
@@ -175,8 +189,6 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
-    
 }

@@ -21,29 +21,32 @@
     
     <TextView
         android:id="@+id/PlantAantal"
-        android:layout_toRightOf="@id/PlantMaat"
+        android:layout_toRightOf="@id/PlantNaam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12sp" />
-    
+
+    <EditText
+        android:id="@+id/aantaltxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnWagen"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:ems="10"
+        android:hint="@string/TekstvakAantal"
+        android:inputType="number" >
+
+        <requestFocus />
+    </EditText>
+
     <Button
         android:id="@+id/btnWagen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="56dp"
-        android:layout_marginRight="28dp"
         android:onClick="cartbtn"
         android:text="@string/winkelwagen" />
-	
-    <EditText
-        android:id="@+id/aantaltxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/btnWagen"
-        android:layout_alignLeft="@+id/PlantMaat"
-        android:ems="10"
-        android:hint="@string/TekstvakAantal" />
 
 </RelativeLayout>

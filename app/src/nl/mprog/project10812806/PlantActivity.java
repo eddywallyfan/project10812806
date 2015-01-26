@@ -8,20 +8,22 @@ package nl.mprog.project10812806;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
-public class PlantActivity extends Activity {
+public class PlantActivity extends ActionBarActivity {
 	Button button;
 	private static final String TAG = "hop";
 	// JSON node keys
 	private static final String TAG_PN = "plantnaam";
 	private static final String TAG_MAAT = "maatomschrijving";
-	private static final String TAG_AANTAL = "aantal";
+	private static final String TAG_VOORRAAD = "voorraad";
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
@@ -33,16 +35,16 @@ public class PlantActivity extends Activity {
 	    // Vraag de JSON waardes op
 	    String naam = in.getStringExtra(TAG_PN);
 	    String maat = in.getStringExtra(TAG_MAAT);
-	    String aantal = in.getStringExtra(TAG_AANTAL);
+	    String voorraad = in.getStringExtra(TAG_VOORRAAD);
 
 	    // Zet de waardes in een textview
 	    TextView lblNaam = (TextView) findViewById(R.id.PlantNaam);
 	    TextView lblMaat = (TextView) findViewById(R.id.PlantMaat);
-	    TextView lblAantal = (TextView) findViewById(R.id.PlantAantal);
+	    TextView lblVoorraad = (TextView) findViewById(R.id.PlantAantal);
 
 	    lblNaam.setText(naam);
 	    lblMaat.setText(maat);
-	    lblAantal.setText(aantal);
+	    lblVoorraad.setText(voorraad);
 	   
 	} 
 	
@@ -52,7 +54,9 @@ public class PlantActivity extends Activity {
 	    // Vraag de JSON waardes op
 		String naam = in.getStringExtra(TAG_PN);
 	    String maat = in.getStringExtra(TAG_MAAT);
-	    String aantal = in.getStringExtra(TAG_AANTAL);
+	    EditText edText = (EditText) findViewById(R.id.aantaltxt);
+    	String aantal = edText.getText().toString();
+	
 	    
 	    // Maak een nieuwe orderline aan waar de geselecteerde waardes inkomen
 		Orderline orderline = new Orderline();
@@ -65,7 +69,8 @@ public class PlantActivity extends Activity {
 		Order order = Order.getInstance();
 		order.add(orderline);
 	    Log.i(TAG, "soep"+Order.getInstance().getList());
-		// Start de volgende activity
+		
+	    // Start de volgende activity
 	    Intent intent = new Intent(getApplicationContext(), ShoppingCartActivity.class);
         startActivity(intent);
 	}
@@ -73,7 +78,7 @@ public class PlantActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		//getMenuInflater().inflate(R.menu.winkelwagen, menu);
+		getMenuInflater().inflate(R.menu.plant, menu);
 		return true;
 	}
 
@@ -89,6 +94,14 @@ public class PlantActivity extends Activity {
         }
 		if (id == R.id.home) {
         	Intent intent = new Intent (this, StartschermActivity.class);
+        	startActivity(intent);
+        }
+		if (id == R.id.cart) {
+        	Intent intent = new Intent (this, ShoppingCartActivity.class);
+        	startActivity(intent);
+        }
+		if (id == R.id.menulist) {
+        	Intent intent = new Intent (this, AssortimentActivity.class);
         	startActivity(intent);
         }
 		return super.onOptionsItemSelected(item);

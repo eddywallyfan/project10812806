@@ -1,12 +1,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="nl.mprog.project10812806.ShoppingcartActivity" >
+      xmlns:yourapp="http://schemas.android.com/apk/res-auto" >
 
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never"/>
-
+        android:id="@+id/action_home"
+        android:icon="@drawable/potje"
+        android:title="@string/home"
+        yourapp:showAsAction="always"/>
+	
+    <item
+        android:id="@+id/action_contact"
+        android:icon="@drawable/ic_action_call"
+        android:title="@string/contact"
+        yourapp:showAsAction="always"/>
+    
+    <item
+        android:id="@+id/action_menulist"
+        android:icon="@drawable/ic_action_view_as_list"
+        android:title="@string/startknop"
+        yourapp:showAsAction="always"/>
 </menu>

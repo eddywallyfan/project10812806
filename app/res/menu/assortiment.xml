@@ -1,30 +1,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="nl.mprog.project10812806.AssortimentActivity" >
+      xmlns:yourapp="http://schemas.android.com/apk/res-auto" >
 
     <item
         android:id="@+id/action_home"
         android:title="@string/home"
-        android:icon="@drawable/home"
-        app:showAsAction="ifRoom"/>
+        android:icon="@drawable/potje"
+        yourapp:showAsAction="ifRoom"/>
 	
     <item
         android:id="@+id/action_contact"
         android:title="@string/contact"
         android:icon="@drawable/ic_action_call"
-        app:showAsAction="ifRoom"/>
+        yourapp:showAsAction="ifRoom"/>
     
     <item
         android:id="@+id/action_cart"
         android:title="@string/winkelwagen"
         android:icon="@drawable/cart"
-        app:showAsAction="ifRoom"/>
+        yourapp:showAsAction="ifRoom"/>
     
     <item android:id="@+id/search"
           android:title="@string/search_hint"
           android:icon="@drawable/ic_action_search"
-          android:showAsAction="collapseActionView|ifRoom"
-          android:actionViewClass="android.widget.SearchView" />
+          yourapp:showAsAction="collapseActionView|ifRoom"
+          />
     
 </menu>

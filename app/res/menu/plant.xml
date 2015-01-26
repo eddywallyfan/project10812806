@@ -1,17 +1,27 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="nl.mprog.project10812806.AssortimentActivity" >
+      xmlns:yourapp="http://schemas.android.com/apk/res-auto" >
 
     <item
         android:id="@+id/home"
-        android:orderInCategory="100"
+        android:icon="@drawable/potje"
         android:title="@string/home"
-        app:showAsAction="never"/>
+        yourapp:showAsAction="always"/>
 	
     <item
         android:id="@+id/contact"
-        android:orderInCategory="100"
+        android:icon="@drawable/ic_action_call"
         android:title="@string/contact"
-        app:showAsAction="never"/>
+        yourapp:showAsAction="always"/>
+    
+    <item
+        android:id="@+id/cart"
+        android:icon="@drawable/cart"
+        android:title="@string/winkelwagen"
+        yourapp:showAsAction="always"/>
+    
+    <item
+        android:id="@+id/menulist"
+        android:icon="@drawable/ic_action_view_as_list"
+        android:title="@string/startknop"
+        yourapp:showAsAction="always"/>
 </menu>

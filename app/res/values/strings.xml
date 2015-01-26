@@ -26,5 +26,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="instructie">Klik op een item om hem uit de lijst te verwijderen</string>
+    <string name="factuur">Factuuradres</string>
+    <string name="klantnaam">Contactpersoon</string>
+    <string name="telefoon">Telefoonnummer</string>
+    <string name= "opslaan">Opslaan</string>
 
 </resources>
