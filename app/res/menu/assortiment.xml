@@ -4,17 +4,21 @@
     tools:context="nl.mprog.project10812806.AssortimentActivity" >
 
     <item
-        android:id="@+id/home"
-        android:orderInCategory="100"
+        android:id="@+id/action_home"
         android:title="@string/home"
         android:icon="@drawable/home"
         app:showAsAction="ifRoom"/>
 	
     <item
-        android:id="@+id/contact"
-        android:orderInCategory="100"
+        android:id="@+id/action_contact"
         android:title="@string/contact"
-        android:icon="@drawable/ic_action_phone"
+        android:icon="@drawable/ic_action_call"
+        app:showAsAction="ifRoom"/>
+    
+    <item
+        android:id="@+id/action_cart"
+        android:title="@string/winkelwagen"
+        android:icon="@drawable/cart"
         app:showAsAction="ifRoom"/>
     
     <item android:id="@+id/search"

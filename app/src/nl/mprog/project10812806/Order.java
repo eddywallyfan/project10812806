@@ -5,7 +5,6 @@
 package nl.mprog.project10812806;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Order {
 	

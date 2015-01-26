@@ -20,6 +20,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -146,6 +147,29 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 		getMenuInflater().inflate(R.menu.assortiment, menu);
 		return true;
 	}
+	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_contact) {
+        	Intent intent = new Intent (this, ContactActivity.class);
+        	startActivity(intent);
+        }
+    	
+        if (id == R.id.action_home) {
+        	Intent i = new Intent (this, StartschermActivity.class);
+        	startActivity(i);
+        }
+        
+        if (id == R.id.action_cart) {
+        	Intent i = new Intent (this, ShoppingCartActivity.class);
+        	startActivity(i);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 
 	@Override

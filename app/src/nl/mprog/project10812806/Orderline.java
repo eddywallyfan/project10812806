@@ -9,6 +9,13 @@ public class Orderline {
 	public String plant_naam;
 	public String aantal;
 	public String potmaat;
+	// afleveradres edittext
+	// extra opm edittekst
+	// Contactpersoon opslaan
+	// bedrijf opslaan
+	// email opslaan
+	// telefoonnr
+	// factuuradres
 
 }
 

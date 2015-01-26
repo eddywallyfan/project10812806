@@ -17,7 +17,7 @@
 	    android:layout_width="wrap_content" 
 	    android:layout_height="wrap_content" 
 	    android:layout_margin="5dp" 
-	    android:text="@string/aantal">
+	    android:text="@string/instructie">
 	</TextView>
 	
 	<ListView 
@@ -40,7 +40,7 @@
 		android:layout_gravity="right">
 		
 		<Button 
-		    android:id="@+id/sendEmail" 
+		    android:id="@+id/mailBtn" 
 		    android:layout_width="wrap_content"
 			android:layout_height="wrap_content" 
 			android:text="@string/bestel">

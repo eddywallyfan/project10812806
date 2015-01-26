@@ -8,6 +8,7 @@ package nl.mprog.project10812806;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,7 +17,7 @@ import android.widget.TextView;
 
 public class PlantActivity extends Activity {
 	Button button;
-
+	private static final String TAG = "hop";
 	// JSON node keys
 	private static final String TAG_PN = "plantnaam";
 	private static final String TAG_MAAT = "maatomschrijving";
@@ -58,11 +59,12 @@ public class PlantActivity extends Activity {
 		orderline.plant_naam = naam;
 		orderline.potmaat = maat;
 		orderline.aantal = aantal;
+		//Log.i("hup", orderline.aantal);
 		
 		// Voeg de orderline toe aan de totale order
 		Order order = Order.getInstance();
 		order.add(orderline);
-	    
+	    Log.i(TAG, "soep"+Order.getInstance().getList());
 		// Start de volgende activity
 	    Intent intent = new Intent(getApplicationContext(), ShoppingCartActivity.class);
         startActivity(intent);

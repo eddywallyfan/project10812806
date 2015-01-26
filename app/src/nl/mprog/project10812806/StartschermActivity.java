@@ -34,7 +34,7 @@ public class StartschermActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.contact) {
+        if (id == R.id.action_contact) {
         	Intent intent = new Intent (this, ContactActivity.class);
         	startActivity(intent);
         }

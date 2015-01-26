@@ -17,14 +17,30 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
-        android:text="@string/bedrijf" />
+        android:hint="@string/bedrijf" />
 
     <EditText
         android:id="@+id/editmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:inputType="textEmailAddress"
+        android:hint="@string/mail" />
+    
+    <EditText
+        android:id="@+id/klant_naam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/mail" />
+    
+    <EditText
+        android:id="@+id/klant_telefoon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
         android:inputType="number"
-        android:text="@string/mail" />
+        android:hint="@string/mail" />
 
 </LinearLayout>

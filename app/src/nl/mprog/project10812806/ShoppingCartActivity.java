@@ -3,20 +3,20 @@ package nl.mprog.project10812806;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import android.support.v7.app.ActionBarActivity;
-import android.app.Activity;
-import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-public class ShoppingCartActivity extends Activity {
-
+public class ShoppingCartActivity extends ActionBarActivity {
+	private static final String TAG = "hop";
 	private static final String TAG_PN = "plantnaam";
 	private static final String TAG_MAAT = "maatomschrijving";
 	private static final String TAG_AANTAL = "aantal";
@@ -49,9 +49,30 @@ public class ShoppingCartActivity extends Activity {
 	    ListView list1 = (ListView) findViewById(R.id.cart_list);
 		list1.setAdapter(adapter);
 		
+		final Button button = (Button) findViewById(R.id.mailBtn);
+        button.setOnClickListener(new View.OnClickListener() {
+        	public void onClick(View v) {
+        		Intent i = new Intent(Intent.ACTION_SEND);
+        		i.setType("message/rfc822");
+        		i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"johnwes@live.nl"});
+        		i.putExtra(Intent.EXTRA_SUBJECT, "bestelling");
+        		i.putExtra(Intent.EXTRA_TEXT   , Order.getInstance().getList());
+        		try {
+        		    startActivity(Intent.createChooser(i, "Send mail..."));
+        		} catch (android.content.ActivityNotFoundException ex) {
+        		    Toast.makeText(ShoppingCartActivity.this, "Er is geen programma gevonden om een email te versturen", Toast.LENGTH_SHORT).show();
+        		}
+        		
+        		//Intent intent = new Intent (this, SluitActivity.class);
+        		//startActivity(intent);
+        	}
+        });
+            
+            
+		
 	}	
 	
-	public void bestelBtn() {
+	/*public void sendEmail() {
 		Intent i = new Intent(Intent.ACTION_SEND);
 		i.setType("message/rfc822");
 		i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"johnwes@live.nl"});
@@ -62,7 +83,10 @@ public class ShoppingCartActivity extends Activity {
 		} catch (android.content.ActivityNotFoundException ex) {
 		    Toast.makeText(ShoppingCartActivity.this, "Er is geen programma gevonden om een email te versturen", Toast.LENGTH_SHORT).show();
 		}
-	}
+		
+		Intent intent = new Intent (this, SluitActivity.class);
+		startActivity(intent);
+	}*/
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
