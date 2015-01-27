@@ -42,7 +42,7 @@ public class CustomListAdapter extends ArrayAdapter<HashMap<String,String>>{
         View v = convertView;
         ViewHolder holder;
         plantList.get(position);//.get(TAG_FOTO);
-       // Log.i(TAG, "position");
+        Log.i(TAG, "lollig"+plantList.size());
         if (v == null) {
             v = mLayoutInflater.inflate(R.layout.list_item, parent, false);
             holder = new ViewHolder();
@@ -53,6 +53,7 @@ public class CustomListAdapter extends ArrayAdapter<HashMap<String,String>>{
             holder.plantaantal = (TextView) v.findViewById(R.id.PlantAantal);
             
             v.setTag(holder);
+        }
             /*Log.i("1e", "1e"+getContext());
             Log.i("2e", "2e"+holder.image);
             Log.i("2e", "2e"+holder.plantaantal);
@@ -68,13 +69,14 @@ public class CustomListAdapter extends ArrayAdapter<HashMap<String,String>>{
             Log.i("hoi", "naam"+naam);
            // String[] s = {naam, voorraad, maat};
            
-            //if (pic.isEmpty() ){
-            //	pic = "https://www.treecommerce.nl/partijfotos/1580229.jpg";
-            //}
+            if (pic.isEmpty() ){
+            	pic = "https://www.treecommerce.nl/partijfotos/1580229.jpg";
+            }
            // Log.i("7e", "7e"+pic);
-            Picasso.with(getContext()).load(pic).placeholder(R.drawable.pop_wtm).into(holder.image);
-            
             ViewHolder hold =(ViewHolder) v.getTag();
+            Picasso.with(getContext()).load(pic).placeholder(R.drawable.pop_wtm).fit().centerInside().into(hold.image);
+            
+            
             //String[] maps = this.plantList;
             //String s = maps[position];
             hold.plantnaam.setText(naam);
@@ -82,10 +84,10 @@ public class CustomListAdapter extends ArrayAdapter<HashMap<String,String>>{
             hold.plantaantal.setText(voorraad);
            // Log.i("log", "log"+hold.plantnaam);
 
-            v.setTag(hold);
-        } else {
+           // v.setTag(hold);
+        /*} else {
             holder = (ViewHolder) v.getTag();
-        }
+        }*/
 
      //   final Orderline plant = getItem(position);
        

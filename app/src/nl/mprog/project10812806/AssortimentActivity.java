@@ -94,7 +94,7 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 				map.put(TAG_VOORRAAD, voorraad);
 				map.put(TAG_FOTO, foto);
 				map.put(TAG_OPM, opm);
-			
+			Log.i("jee", "minee"+ plantnaam);
 				
 				plantList.add(map);
 				//Log.i("joepi", "foutje"+ plantList);
