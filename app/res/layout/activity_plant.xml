@@ -6,6 +6,15 @@
     android:padding="5dp"
     tools:context=".MainActivity" >
  
+	<ImageView
+        android:id="@+id/plaatje"
+        android:contentDescription="@string/CD"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="center">
+    </ImageView>
+    
 	<TextView
         android:id="@+id/PlantNaam"
         android:layout_width="wrap_content"

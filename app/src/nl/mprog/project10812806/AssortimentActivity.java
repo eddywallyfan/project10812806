@@ -47,7 +47,7 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 	public static final String TAG_VOORRAAD = "qty";
 	public static final String TAG_FOTO = "foto";
 	private static final String TAG_OPM = "opm";
-
+	
 	private static final int Image = R.id.Image;
     
 	@Override
@@ -127,17 +127,18 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 			    String naam = ((TextView) view.findViewById(R.id.PlantNaam)).getText().toString();
 	            String maat = ((TextView) view.findViewById(R.id.PlantMaat)).getText().toString();
 	            String voorraad = ((TextView) view.findViewById(R.id.PlantAantal)).getText().toString();
-	           /* String pic = (plantList.get(position).get(AssortimentActivity.TAG_FOTO));
-	            ImageView plaatje = (ImageView) findViewById(R.id.Image);
-	            ImageView foto = Picasso.with(getBaseContext()).load(pic).into(plaatje);*/
+	            String plaatje = ((ImageView) view.findViewById(R.id.Image)).getDrawable().toString();
+	            
 	            
 	            // Start activity
 	            Intent intent = new Intent(getApplicationContext(), PlantActivity.class);
 	            intent.putExtra(TAG_PN, naam);
 	            intent.putExtra(TAG_MAAT, maat);
 	            intent.putExtra(TAG_VOORRAAD, voorraad);
-	            //intent.putExtra(TAG_FOTO, plaatje);
+	            intent.putExtra(TAG_FOTO, plaatje);
 	            startActivity(intent);
+	            Log.i("logger", "logger "+ naam);
+	            Log.i("logger", "logger "+ plaatje);
 			}       	
         });     
     }

@@ -5,8 +5,18 @@
  */
 package nl.mprog.project10812806;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import com.squareup.picasso.Picasso;
+
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -15,6 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class PlantActivity extends ActionBarActivity {
@@ -24,11 +35,14 @@ public class PlantActivity extends ActionBarActivity {
 	private static final String TAG_PN = "plantnaam";
 	private static final String TAG_MAAT = "maatomschrijving";
 	private static final String TAG_VOORRAAD = "voorraad";
+	private static final String TAG_FOTO = "foto";
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_plant);
-
+	    Log.i("TAG", "TAG "+ TAG_FOTO);
+	    Log.i("TAG", "TAG "+ TAG_PN);
 	    // Vraag de intent op van de vorige activity
 	    Intent in = getIntent();
 
@@ -36,7 +50,14 @@ public class PlantActivity extends ActionBarActivity {
 	    String naam = in.getStringExtra(TAG_PN);
 	    String maat = in.getStringExtra(TAG_MAAT);
 	    String voorraad = in.getStringExtra(TAG_VOORRAAD);
-
+	    String plaatje = in.getStringExtra(TAG_FOTO);
+	    Log.i("foto", "foto "+ plaatje);
+	    Log.i("foto", "foto "+ naam);
+	    
+	    ImageView view = (ImageView) findViewById(R.id.plaatje);
+	    //Context con = getBaseContext();
+	    Picasso.with(getBaseContext()).load(plaatje).placeholder(R.drawable.pop_wtm).fit().centerInside().into(view);
+	    
 	    // Zet de waardes in een textview
 	    TextView lblNaam = (TextView) findViewById(R.id.PlantNaam);
 	    TextView lblMaat = (TextView) findViewById(R.id.PlantMaat);
@@ -74,6 +95,21 @@ public class PlantActivity extends ActionBarActivity {
 	    Intent intent = new Intent(getApplicationContext(), ShoppingCartActivity.class);
         startActivity(intent);
 	}
+	
+	/*public static Bitmap getBitmapFromURL(String src) {
+	    try {
+	        URL url = new URL(src);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setDoInput(true);
+	        connection.connect();
+	        InputStream input = connection.getInputStream();
+	        Bitmap myBitmap = BitmapFactory.decodeStream(input);
+	        return myBitmap;
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        return null;
+	    }
+	}*/
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

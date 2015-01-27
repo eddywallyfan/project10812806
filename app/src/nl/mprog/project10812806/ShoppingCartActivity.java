@@ -3,6 +3,7 @@ package nl.mprog.project10812806;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -41,12 +42,8 @@ public class ShoppingCartActivity extends ActionBarActivity {
 		
 		plantList.add(map);
 	   
-		
-	    ListAdapter adapter = new SimpleAdapter(this, plantList,
-            	R.layout.list_item,
-            new String[] { naam, maat, aantal}, new int[] {
-                    R.id.PlantNaam, R.id.PlantMaat, R.id.PlantAantal 
-                    });
+		Context context = getBaseContext();
+		CustomListAdapter adapter = new CustomListAdapter(context, R.layout.list_item, plantList);
 
 	    ListView list1 = (ListView) findViewById(R.id.cart_list);
 		list1.setAdapter(adapter);
