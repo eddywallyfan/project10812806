@@ -13,10 +13,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
+
 import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
@@ -26,6 +30,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -37,11 +42,13 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 	private static final String TAG = "hopsakee";
 	
 	// Sla JSON nodes op in string
-	private static final String TAG_PN = "plantnaam";
-	private static final String TAG_MAAT = "maatomschrijving";
-	private static final String TAG_VOORRAAD = "qty";
+	public static final String TAG_PN = "plantnaam";
+	public static final String TAG_MAAT = "maatomschrijving";
+	public static final String TAG_VOORRAAD = "qty";
 	public static final String TAG_FOTO = "foto";
 	private static final String TAG_OPM = "opm";
+
+	private static final int Image = R.id.Image;
     
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,10 +108,12 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
         //Log.i("joepi", "foutje"+ context);
 		//ArrayList<HashMap<String, String>> map = null;
 		CustomListAdapter adapter = new CustomListAdapter(context, R.layout.list_item, plantList);
-        /*ListAdapter adapter = new SimpleAdapter(this, plantList,
+        
+        /*Picasso.with(getBaseContext()).load(TAG_FOTO).placeholder(R.drawable.pop_wtm).into(Image);
+        ListAdapter adapter = new SimpleAdapter(this, plantList,
             	R.layout.list_item,
-            new String[] { TAG_PN, TAG_MAAT, TAG_VOORRAAD}, new int[] {
-                    R.id.PlantNaam, R.id.PlantMaat, R.id.PlantAantal 
+            new String[] { TAG_PN, TAG_MAAT, TAG_VOORRAAD, TAG_FOTO}, new int[] {
+                    R.id.PlantNaam, R.id.PlantMaat, R.id.PlantAantal, R.id.Image 
                     });*/
         setListAdapter(adapter);
     
@@ -118,12 +127,16 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 			    String naam = ((TextView) view.findViewById(R.id.PlantNaam)).getText().toString();
 	            String maat = ((TextView) view.findViewById(R.id.PlantMaat)).getText().toString();
 	            String voorraad = ((TextView) view.findViewById(R.id.PlantAantal)).getText().toString();
-
+	           /* String pic = (plantList.get(position).get(AssortimentActivity.TAG_FOTO));
+	            ImageView plaatje = (ImageView) findViewById(R.id.Image);
+	            ImageView foto = Picasso.with(getBaseContext()).load(pic).into(plaatje);*/
+	            
 	            // Start activity
 	            Intent intent = new Intent(getApplicationContext(), PlantActivity.class);
 	            intent.putExtra(TAG_PN, naam);
 	            intent.putExtra(TAG_MAAT, maat);
 	            intent.putExtra(TAG_VOORRAAD, voorraad);
+	            //intent.putExtra(TAG_FOTO, plaatje);
 	            startActivity(intent);
 			}       	
         });     

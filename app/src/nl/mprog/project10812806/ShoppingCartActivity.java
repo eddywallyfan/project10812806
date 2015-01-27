@@ -6,6 +6,7 @@ import java.util.HashMap;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -50,10 +51,22 @@ public class ShoppingCartActivity extends ActionBarActivity {
 	    ListView list1 = (ListView) findViewById(R.id.cart_list);
 		list1.setAdapter(adapter);
 		
+		/*String order = "";
+		final ArrayList<Orderline> orderline = Order.getInstance().getList();
+		for (int i=0; i < orderline.size(); i++){
+			order += ;
+			Log.i("jep", "jep"+ order);
+			order += "\n"; 
+		}*/
 		final Button button = (Button) findViewById(R.id.mailBtn);
         button.setOnClickListener(new View.OnClickListener() {
+        	
+        	//ArrayList<Orderline> order = Order.getInstance().getList();
+        	//String order = TextUtils.join("\t", orderline);
         	String order = Order.getInstance().getList().toString();
-        	public void onClick(View v) {
+        	
+        	
+        			public void onClick(View v) {
         		Intent i = new Intent(Intent.ACTION_SEND);
         		i.setType("message/rfc822");
         		i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"johnwes@live.nl"});
