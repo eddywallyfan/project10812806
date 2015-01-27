@@ -9,32 +9,38 @@
         android:id="@+id/Image"
         android:contentDescription="@string/CD"
         android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_weight="0.3"
-        android:layout_marginLeft="0dp"
-        android:layout_gravity="left"
-        android:layout_marginTop="4dp" >
+        android:layout_height="120dp"
+        android:layout_weight="0.5" 
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="center">
     </ImageView>
     
     <TextView
-        android:id="@+id/PlantAantal"
-        android:gravity="right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="93dp"
-        android:textSize="12sp" />
-    
-    <TextView
         android:id="@+id/PlantNaam"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="0.6"
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="center"
         android:textSize="15sp"/>
 
-    
     <TextView
         android:id="@+id/PlantMaat"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0.3"  
+        android:layout_marginLeft="5dp"     
         android:textSize="12sp" />
+    
+    <TextView
+        android:id="@+id/PlantAantal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3"
+        android:layout_gravity="center"
+    	android:layout_marginLeft="8dp"
+        android:textSize="12sp" />
+    
  
 </LinearLayout>
