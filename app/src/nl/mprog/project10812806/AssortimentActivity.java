@@ -23,6 +23,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
@@ -36,7 +37,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-public class AssortimentActivity extends ListActivity implements OnItemClickListener{
+public class AssortimentActivity extends ActionBarActivity {
 	
 	// Tag om te loggen
 	private static final String TAG = "hopsakee";
@@ -49,7 +50,7 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 	private static final String TAG_OPM = "opm";
 	
 	private static final int Image = R.id.Image;
-	private ArrayList<String> urllist = new ArrayList<String>();
+	public ArrayList<String> urllist = new ArrayList<String>();
     
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +96,7 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 				map.put(TAG_VOORRAAD, voorraad);
 				map.put(TAG_FOTO, foto);
 				map.put(TAG_OPM, opm);
-			Log.i("jee", "minee"+ plantnaam);
+		//	Log.i("jee", "minee"+ plantnaam);
 				
 				plantList.add(map);
 				urllist.add(foto);
@@ -106,20 +107,13 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 			e1.printStackTrace();
 		}
         
+        // Zet de ArrayList plantList in een lijst
         Context context = getBaseContext();
-        //Log.i("joepi", "foutje"+ context);
-		//ArrayList<HashMap<String, String>> map = null;
 		CustomListAdapter adapter = new CustomListAdapter(context, R.layout.list_item, plantList);
-        
-        /*Picasso.with(getBaseContext()).load(TAG_FOTO).placeholder(R.drawable.pop_wtm).into(Image);
-        ListAdapter adapter = new SimpleAdapter(this, plantList,
-            	R.layout.list_item,
-            new String[] { TAG_PN, TAG_MAAT, TAG_VOORRAAD, TAG_FOTO}, new int[] {
-                    R.id.PlantNaam, R.id.PlantMaat, R.id.PlantAantal, R.id.Image 
-                    });*/
-        setListAdapter(adapter);
+		ListView lv = (ListView) findViewById(R.id.list);
+        lv.setAdapter(adapter);
     
-        ListView lv = getListView();   
+        // Stel onClickListener in
         lv.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -129,20 +123,21 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 			    String naam = ((TextView) view.findViewById(R.id.PlantNaam)).getText().toString();
 	            String maat = ((TextView) view.findViewById(R.id.PlantMaat)).getText().toString();
 	            String voorraad = ((TextView) view.findViewById(R.id.PlantAantal)).getText().toString();
-	            String plaatje = ((ImageView) view.findViewById(R.id.Image)).getDrawable().toString();
+	           // String plaatje = ((ImageView) view.findViewById(R.id.Image)).getDrawable().toString();            
 	            
-	            
-	            // Start activity
+	            // Start activity en geef de correcte Strings mee
 	            Intent intent = new Intent(getApplicationContext(), PlantActivity.class);
 	            intent.putExtra(TAG_PN, naam);
 	            intent.putExtra(TAG_MAAT, maat);
 	            intent.putExtra(TAG_VOORRAAD, voorraad);
 	            intent.putExtra(TAG_FOTO, urllist.get(position));
 	            startActivity(intent);
-	            Log.i("logger", "logger "+ naam);
-	            Log.i("logger", "logger "+ plaatje);
+	        //    Log.i("logger", "logger "+ naam);
+	      //      Log.i("logger", "logger "+ plaatje);
 			}       	
-        });     
+        });  
+
+        handleIntent(getIntent());
     }
     
 	
@@ -160,7 +155,6 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
     		return null;
     	}
     }
-    
     
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -200,11 +194,26 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
         }
         return super.onOptionsItemSelected(item);
     }
-
-
+	
 	@Override
+    protected void onNewIntent(Intent intent) {
+		setIntent(intent);
+        handleIntent(intent);
+    }
+
+	
+	private void handleIntent(Intent intent) {
+
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            //use the query to search your data somehow;
+        }
+    }
+
+
+	/*@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		// TODO Auto-generated method stub	
-	}
+	}*/
 }

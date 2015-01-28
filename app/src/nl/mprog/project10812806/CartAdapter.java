@@ -14,23 +14,28 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CartAdapter extends ArrayAdapter<HashMap<String,String>>{
-
+public class CartAdapter extends ArrayAdapter<Orderline>{
+	
     private LayoutInflater mLayoutInflater;
-    ArrayList<HashMap<String, String>> plantList = new ArrayList<HashMap<String, String>>();
+    ArrayList<Orderline> order = Order.getInstance().getList();
  
-	public CartAdapter(Context context, int textViewResourceId, ArrayList<HashMap<String, String>> map) {
-        super(context, textViewResourceId, map);
+	public CartAdapter(Context context, int textViewResourceId, ArrayList<Orderline> map) {
+        super(context, textViewResourceId);
         mLayoutInflater = LayoutInflater.from(context);
-        this.plantList = map;
+        this.order = map;
     }
+	
+	@Override
+	public int getCount() {
+		return order.size();
+	}
 
 	@Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View v = convertView;
         ViewHolder holder;
-        plantList.get(position);
+        order.get(position);
    
         if (v == null) {
             v = mLayoutInflater.inflate(R.layout.list_item, parent, false);
@@ -44,11 +49,11 @@ public class CartAdapter extends ArrayAdapter<HashMap<String,String>>{
             v.setTag(holder);
         }
            
-            String pic = (plantList.get(position).get(AssortimentActivity.TAG_FOTO));
-            String naam = (plantList.get(position).get(AssortimentActivity.TAG_PN));
-            String voorraad = (plantList.get(position).get(AssortimentActivity.TAG_VOORRAAD));
-            String maat = (plantList.get(position).get(AssortimentActivity.TAG_MAAT));
-            Log.i("hoi", "naam"+naam);
+            String aantal = (order.get(position).aantal);
+            String naam = (order.get(position).plant_naam);
+            String maat = (order.get(position).potmaat);
+            String pic = (order.get(position).foto);
+            
            
             if (pic.isEmpty() ){
             	pic = "https://www.treecommerce.nl/partijfotos/1580229.jpg";
@@ -59,8 +64,10 @@ public class CartAdapter extends ArrayAdapter<HashMap<String,String>>{
    
             hold.plantnaam.setText(naam);
             hold.plantmaat.setText(maat);
-            hold.plantaantal.setText(voorraad);
-              
+            hold.plantaantal.setText(aantal);
+            Log.i("hoi", "ordercart"+naam);
+            Log.i("hoi", "ordercart"+order.get(position).plant_naam);
+    		
         return v;
     }
 

@@ -42,7 +42,7 @@ public class CustomListAdapter extends ArrayAdapter<HashMap<String,String>>{
         View v = convertView;
         ViewHolder holder;
         plantList.get(position);//.get(TAG_FOTO);
-        Log.i(TAG, "lollig"+plantList.size());
+      //  Log.i(TAG, "lollig"+plantList.size());
         if (v == null) {
             v = mLayoutInflater.inflate(R.layout.list_item, parent, false);
             holder = new ViewHolder();
@@ -66,8 +66,8 @@ public class CustomListAdapter extends ArrayAdapter<HashMap<String,String>>{
             String naam = (plantList.get(position).get(AssortimentActivity.TAG_PN));
             String voorraad = (plantList.get(position).get(AssortimentActivity.TAG_VOORRAAD));
             String maat = (plantList.get(position).get(AssortimentActivity.TAG_MAAT));
-            Log.i("hoi", "naam"+naam);
-            Log.i("hoi", "naam"+pic);
+            //Log.i("hoi", "naam"+naam);
+            //Log.i("hoi", "naam"+pic);
            // String[] s = {naam, voorraad, maat};
            
             if (pic.isEmpty() ){

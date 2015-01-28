@@ -34,15 +34,15 @@ public class PlantActivity extends ActionBarActivity {
 	// JSON node keys
 	private static final String TAG_PN = "plantnaam";
 	private static final String TAG_MAAT = "maatomschrijving";
-	private static final String TAG_VOORRAAD = "voorraad";
+	private static final String TAG_VOORRAAD = "qty";
 	private static final String TAG_FOTO = "foto";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_plant);
-	    Log.i("TAG", "TAG "+ TAG_FOTO);
-	    Log.i("TAG", "TAG "+ TAG_PN);
+	   // Log.i("TAG", "TAG "+ TAG_FOTO);
+	    //Log.i("TAG", "TAG "+ TAG_PN);
 	    // Vraag de intent op van de vorige activity
 	    Intent in = getIntent();
 
@@ -51,8 +51,8 @@ public class PlantActivity extends ActionBarActivity {
 	    String maat = in.getStringExtra(TAG_MAAT);
 	    String voorraad = in.getStringExtra(TAG_VOORRAAD);
 	    String plaatje = in.getStringExtra(TAG_FOTO);
-	    Log.i("foto", "foto "+ plaatje);
-	    Log.i("foto", "foto "+ naam);
+	  //  Log.i("foto", "foto "+ voorraad);
+	   // Log.i("foto", "foto "+ naam);
 	    
 	    ImageView view = (ImageView) findViewById(R.id.plaatje);
 	    //Context con = getBaseContext();
@@ -77,6 +77,7 @@ public class PlantActivity extends ActionBarActivity {
 	    String maat = in.getStringExtra(TAG_MAAT);
 	    EditText edText = (EditText) findViewById(R.id.aantaltxt);
     	String aantal = edText.getText().toString();
+    	String foto = in.getStringExtra(TAG_FOTO);
 	
 	    
 	    // Maak een nieuwe orderline aan waar de geselecteerde waardes inkomen
@@ -84,32 +85,20 @@ public class PlantActivity extends ActionBarActivity {
 		orderline.plant_naam = naam;
 		orderline.potmaat = maat;
 		orderline.aantal = aantal;
+		orderline.foto = foto;
 		//Log.i("hup", orderline.aantal);
 		
 		// Voeg de orderline toe aan de totale order
 		Order order = Order.getInstance();
 		order.add(orderline);
-	    Log.i(TAG, "soep"+Order.getInstance().getList());
+		
+	   // Log.i(TAG, "soep"+Order.getInstance().getList());
 		
 	    // Start de volgende activity
 	    Intent intent = new Intent(getApplicationContext(), ShoppingCartActivity.class);
+	    intent.putExtra(TAG_FOTO, foto);
         startActivity(intent);
 	}
-	
-	/*public static Bitmap getBitmapFromURL(String src) {
-	    try {
-	        URL url = new URL(src);
-	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-	        connection.setDoInput(true);
-	        connection.connect();
-	        InputStream input = connection.getInputStream();
-	        Bitmap myBitmap = BitmapFactory.decodeStream(input);
-	        return myBitmap;
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	        return null;
-	    }
-	}*/
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

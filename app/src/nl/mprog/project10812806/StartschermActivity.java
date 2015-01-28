@@ -13,19 +13,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
-
 public class StartschermActivity extends ActionBarActivity {
 
 	Orderline orderline = new Orderline();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        
-        if (orderline.bedrijf == null){
-        	setContentView(R.layout.eerste_gebruik);
-        } else{
+        super.onCreate(savedInstanceState); 
         	setContentView(R.layout.activity_startscherm);
-        }
     }
 
 
@@ -48,16 +42,23 @@ public class StartschermActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    
+    // Methode voor de knop bij eerste gebruik
     public void btn_eerste (View view) {
+    	
     	// Zet de uitkomsten van de edittekst vakjes in strings
     	EditText edText1 = (EditText) findViewById(R.id.editbedrijf);
     	String bedrijf = edText1.getText().toString();
+    	
     	EditText edText2 = (EditText) findViewById(R.id.klant_naam);
     	String contact = edText2.getText().toString();
+    	
     	EditText edText3 = (EditText) findViewById(R.id.editmail);
     	String email = edText3.getText().toString();
+    	
     	EditText edText4 = (EditText) findViewById(R.id.klant_factuur);
     	String factuur = edText4.getText().toString();
+    	
     	EditText edText5 = (EditText) findViewById(R.id.klant_telefoon);
     	String phone = edText5.getText().toString();
     	
@@ -67,15 +68,18 @@ public class StartschermActivity extends ActionBarActivity {
     	orderline.email = email;
     	orderline.factuurAdres = factuur;
     	orderline.phoneNr = phone;
-    	//Log.i("orderline", "tot hier"+ orderline.email);
+    	
+    	// Start de volgende activity
     	Intent intent = new Intent (this, AssortimentActivity.class);
     	startActivity(intent);
     }
     
+    // Methodes voor de twee knoppen bij het gewone scherm
     public void startknop (View view) {
     	Intent intent = new Intent (this, AssortimentActivity.class);
     	startActivity(intent);
     	}
+   
     public void contact (View view) {
     	Intent intent = new Intent (this, ContactActivity.class);
     	startActivity(intent);

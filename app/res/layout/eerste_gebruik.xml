@@ -38,13 +38,6 @@
         android:background="#EEEEEE"
         android:text="@string/gegevens" />
     
-    <Button
-        android:id="@+id/btn_eerste"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="btn_eerste"
-        android:text="@string/opslaan" />
-    
     <EditText
         android:id="@+id/editbedrijf"
         android:layout_width="wrap_content"
@@ -83,5 +76,16 @@
 
         <requestFocus />
     </EditText>
+
+    <Button
+        android:id="@+id/btn_eerste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/EersteGebruikTextView"
+        android:layout_below="@+id/editmail"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="36dp"
+        android:onClick="putInSP"
+        android:text="@string/opslaan" />
     
 </RelativeLayout>

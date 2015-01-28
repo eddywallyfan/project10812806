@@ -11,6 +11,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class UrlFetcher {
+	
+	// Zet een url om naar een bytearray
 	byte[] getUrlBytes(String urlSpec) throws IOException{
 		URL url = new URL(urlSpec);
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -33,6 +35,8 @@ public class UrlFetcher {
 			connection.disconnect();
 		}
 	}	
+	
+	// Zet de bytearray om naar een String
 	public String getUrl(String urlSpec) throws IOException{
 		return new String (getUrlBytes(urlSpec));
 	}

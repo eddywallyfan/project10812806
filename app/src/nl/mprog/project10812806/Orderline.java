@@ -15,6 +15,19 @@ public class Orderline {
 	public String email;
 	public String phoneNr;
 	public String factuurAdres;
+	public String foto;
+	
+	
+	@Override
+	public String toString() {
+		String s = "naam:     " + plant_naam + "\n";
+		s += "aantal:    " + aantal + "\n";
+		s += "potmaat: " + potmaat + "\n\n";
+		return s;
+	}
+	
+	
+	
 
 }
 

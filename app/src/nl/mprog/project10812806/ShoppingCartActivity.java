@@ -1,3 +1,8 @@
+/*John Wesselingh
+ * 10812806
+ * Activity die een listview maakt van de geselecteerde Order (via de klasses Order en Orderline)
+ * Vervolgens wordt de uiteindelijke list in een email bericht gestopt waarna de client (gmail) het overneemt
+ */
 package nl.mprog.project10812806;
 
 import java.util.ArrayList;
@@ -12,72 +17,70 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 
 public class ShoppingCartActivity extends ActionBarActivity {
-	private static final String TAG = "hop";
-	private static final String TAG_PN = "plantnaam";
-	private static final String TAG_MAAT = "maatomschrijving";
-	private static final String TAG_AANTAL = "aantal";
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_winkelwagen);
-		
-		Intent in = getIntent();
-		String naam = in.getStringExtra(TAG_PN);
-	    String maat = in.getStringExtra(TAG_MAAT);
-	    String aantal = in.getStringExtra(TAG_AANTAL);
-
-	    ArrayList<HashMap<String, String>> plantList = new ArrayList<HashMap<String, String>>();
-	    HashMap<String, String> map = new HashMap<String, String>();
-		
-	    map.put(TAG_PN, naam);
-		map.put(TAG_MAAT, maat);
-		map.put(TAG_AANTAL, aantal);
-		
-		plantList.add(map);
+	    
+	    ArrayList<Orderline> orderLine = Order.getInstance().getList();
 	   
+	    // Maak een listview aan van de Orderline
 		Context context = getBaseContext();
-		CustomListAdapter adapter = new CustomListAdapter(context, R.layout.list_item, plantList);
+		final CartAdapter adapter = new CartAdapter(context, R.layout.list_item, orderLine);
 
 	    ListView list1 = (ListView) findViewById(R.id.cart_list);
 		list1.setAdapter(adapter);
 		
-		/*String order = "";
-		final ArrayList<Orderline> orderline = Order.getInstance().getList();
-		for (int i=0; i < orderline.size(); i++){
-			order += ;
-			Log.i("jep", "jep"+ order);
-			order += "\n"; 
-		}*/
+		// Zorg ervoor dat een item uit de lijst verdwijnt als er lang op geklikt wordt
+		list1.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				ArrayList <Orderline> orderline = Order.getInstance().getList();
+				orderline.remove(position);
+				adapter.notifyDataSetChanged();
+				return false;
+			}       	
+        }); 
+		
+		// Knop die gebruikt wordt om de email aan te maken
 		final Button button = (Button) findViewById(R.id.mailBtn);
         button.setOnClickListener(new View.OnClickListener() {
-        	
-        	//ArrayList<Orderline> order = Order.getInstance().getList();
-        	//String order = TextUtils.join("\t", orderline);
-        	String order = Order.getInstance().getList().toString();
-        	
-        	
-        			public void onClick(View v) {
+        
+        	public void onClick(View v) {
+        		String order = "";
+            	ArrayList<Orderline> orderList = Order.getInstance().getList();
+
+            	for (int i = 0; i < orderList.size(); i++) {
+            		Orderline orderLine = orderList.get(i);
+            		order = order + orderLine.toString();
+            	}
+        		
         		Intent i = new Intent(Intent.ACTION_SEND);
         		i.setType("message/rfc822");
         		i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"johnwes@live.nl"});
         		i.putExtra(Intent.EXTRA_SUBJECT, "bestelling via app");
         		i.putExtra(Intent.EXTRA_TEXT   , order);
-        		Log.i("lgo", "dfmsg" + Order.getInstance().getList());
+        	
         		try {
         		    startActivity(Intent.createChooser(i, "Verstuur email via:"));
         		} catch (android.content.ActivityNotFoundException ex) {
         		    Toast.makeText(ShoppingCartActivity.this, "Er is geen programma gevonden om een email te versturen", Toast.LENGTH_SHORT).show();
         		}
-        		
-        	//	Intent intent = new Intent(ShoppingCartActivity.this, SluitActivity.class);
-            	//startActivity(intent);
+        		setContentView(R.layout.activity_sluit);
         	}
         });
 	}	
@@ -107,8 +110,7 @@ public class ShoppingCartActivity extends ActionBarActivity {
 		if (id == R.id.action_menulist) {
 			Intent intent = new Intent (this, AssortimentActivity.class);
 	    	startActivity(intent);
-		}
-		
+		}		
 		return super.onOptionsItemSelected(item);
 	}
 }

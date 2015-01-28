@@ -1,6 +1,6 @@
 /* John Wesselingh project
  * 10812806
- * Een class met methodes die in de winkelwagen gebruikt worden
+ * Een class met methodes die gebruikt worden om orders op te slaan en op te vragen.
  */
 package nl.mprog.project10812806;
 
@@ -10,6 +10,7 @@ public class Order {
 	
 	private static Order instance = null;
 	private ArrayList<Orderline> orderList = new ArrayList<Orderline>();
+	
 	
 	public static Order getInstance(){
 		
@@ -21,7 +22,6 @@ public class Order {
 			instance = new Order();
 			return instance;	
 		}
-
 	}
 	
 	public void add(Orderline hup){
