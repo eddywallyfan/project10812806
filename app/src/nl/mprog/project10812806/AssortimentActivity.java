@@ -49,6 +49,7 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 	private static final String TAG_OPM = "opm";
 	
 	private static final int Image = R.id.Image;
+	private ArrayList<String> urllist = new ArrayList<String>();
     
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +98,7 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 			Log.i("jee", "minee"+ plantnaam);
 				
 				plantList.add(map);
+				urllist.add(foto);
 				//Log.i("joepi", "foutje"+ plantList);
 			}
 		} catch (JSONException e1) {
@@ -135,7 +137,7 @@ public class AssortimentActivity extends ListActivity implements OnItemClickList
 	            intent.putExtra(TAG_PN, naam);
 	            intent.putExtra(TAG_MAAT, maat);
 	            intent.putExtra(TAG_VOORRAAD, voorraad);
-	            intent.putExtra(TAG_FOTO, plaatje);
+	            intent.putExtra(TAG_FOTO, urllist.get(position));
 	            startActivity(intent);
 	            Log.i("logger", "logger "+ naam);
 	            Log.i("logger", "logger "+ plaatje);

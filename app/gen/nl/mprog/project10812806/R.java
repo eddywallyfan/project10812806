@@ -1668,7 +1668,7 @@ containing a value of this type.
         public static final int LinearLayoutItem=0x7f0a0056;
         public static final int PlantAantal=0x7f0a0044;
         public static final int PlantMaat=0x7f0a0043;
-        public static final int PlantNaam=0x7f0a0042;
+        public static final int PlantNaam=0x7f0a0041;
         public static final int TextView01=0x7f0a004a;
         public static final int TextViewItem=0x7f0a0059;
         public static final int aantaltxt=0x7f0a0045;
@@ -1731,7 +1731,7 @@ containing a value of this type.
         public static final int never=0x7f0a0017;
         public static final int none=0x7f0a000f;
         public static final int normal=0x7f0a000b;
-        public static final int plaatje=0x7f0a0041;
+        public static final int plaatje=0x7f0a0042;
         public static final int progress_circular=0x7f0a0007;
         public static final int progress_horizontal=0x7f0a0008;
         public static final int radio=0x7f0a002d;
@@ -1832,9 +1832,8 @@ containing a value of this type.
         public static final int winkelwagen=0x7f0d0006;
     }
     public static final class string {
-        public static final int BekijkWinkelwagen=0x7f0b001f;
-        public static final int CD=0x7f0b0023;
-        public static final int TekstvakAantal=0x7f0b001e;
+        public static final int BekijkWinkelwagen=0x7f0b001e;
+        public static final int CD=0x7f0b0022;
         public static final int aantal=0x7f0b001c;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */
@@ -1889,27 +1888,27 @@ containing a value of this type.
         /**  Description of a share target (both in the list of such or the default share button) in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] 
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f0b000d;
-        public static final int action_settings=0x7f0b0026;
+        public static final int action_settings=0x7f0b0025;
         public static final int app_name=0x7f0b000f;
         public static final int bedankt=0x7f0b0018;
-        public static final int bedrijf=0x7f0b0021;
+        public static final int bedrijf=0x7f0b0020;
         public static final int bestel=0x7f0b0016;
         public static final int contact=0x7f0b001a;
-        public static final int factuur=0x7f0b0028;
-        public static final int gegevens=0x7f0b0020;
-        public static final int hello_world=0x7f0b0025;
+        public static final int factuur=0x7f0b0027;
+        public static final int gegevens=0x7f0b001f;
+        public static final int hello_world=0x7f0b0024;
         public static final int home=0x7f0b001b;
-        public static final int instructie=0x7f0b0027;
-        public static final int klantnaam=0x7f0b0029;
-        public static final int mail=0x7f0b0022;
-        public static final int opslaan=0x7f0b002b;
+        public static final int instructie=0x7f0b0026;
+        public static final int klantnaam=0x7f0b0028;
+        public static final int mail=0x7f0b0021;
+        public static final int opslaan=0x7f0b002a;
         public static final int plant=0x7f0b0011;
         public static final int search_hint=0x7f0b0019;
         public static final int soort=0x7f0b001d;
         public static final int startknop=0x7f0b0012;
-        public static final int telefoon=0x7f0b002a;
+        public static final int telefoon=0x7f0b0029;
         public static final int terug=0x7f0b0014;
-        public static final int title_activity_shoppingcart=0x7f0b0024;
+        public static final int title_activity_shoppingcart=0x7f0b0023;
         public static final int title_activity_sluit=0x7f0b0017;
         public static final int title_activity_winkelwagen=0x7f0b0015;
         public static final int welkom=0x7f0b0010;
