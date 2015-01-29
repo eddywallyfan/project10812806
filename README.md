@@ -6,7 +6,7 @@ all rights reserved
 Dit project is uitgevoerd voor de minor programmeren aan de Universiteit van Amsterdam.
 Het betreft een app voor androidsystemen waar een boomkwekerijproduct besteld kan worden via email.
 
-- Licenties en copyrights
+###Licenties en copyrights
 Voor alle delen die door mijzelf geschreven zijn geldt een copyright notice zoals hierboven omschreven. 
 Dit geld niet voor de volgende onderdelen:
 Alle foto's zijn eigendom van boomkwekerij WTM de Boer. Om deze te gebruiken is toestemming verkregen.
