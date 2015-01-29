@@ -6,7 +6,7 @@
     android:orientation="horizontal">
     
     <ImageView
-        android:id="@+id/Image"
+        android:id="@+id/image"
         android:contentDescription="@string/CD"
         android:layout_width="0dp"
         android:layout_height="120dp"
@@ -16,7 +16,7 @@
     </ImageView>
     
     <TextView
-        android:id="@+id/PlantNaam"
+        android:id="@+id/plantName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.6"
@@ -25,7 +25,7 @@
         android:textSize="15sp"/>
 
     <TextView
-        android:id="@+id/PlantMaat"
+        android:id="@+id/plantSize"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -34,7 +34,7 @@
         android:textSize="12sp" />
     
     <TextView
-        android:id="@+id/PlantAantal"
+        android:id="@+id/plantStock"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.3"
@@ -42,5 +42,4 @@
     	android:layout_marginLeft="8dp"
         android:textSize="12sp" />
     
- 
 </LinearLayout>

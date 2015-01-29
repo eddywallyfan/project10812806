@@ -6,39 +6,39 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="nl.mprog.project10812806.StartschermActivity" 
+    tools:context="nl.mprog.project10812806.MainActivity" 
     android:background="@drawable/wtm_achtergrond">
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button1"
+        android:layout_above="@+id/startBtn"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
         android:text="@string/welkom" 
         android:textColor="#FFFFFF"/>
 
     <Button
-        android:id="@+id/contactknop"
+        android:id="@+id/contactBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="74dp"
         android:layout_marginLeft="18dp"
-        android:layout_toRightOf="@+id/button1"
-        android:onClick="contact"
+        android:layout_toRightOf="@+id/startBtn"
+        android:onClick="contactButton"
         android:text="@string/contact" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/startBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/contactknop"
-        android:layout_alignBottom="@+id/contactknop"
+        android:layout_alignBaseline="@+id/contactBtn"
+        android:layout_alignBottom="@+id/contactBtn"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="35dp"
-        android:onClick="startknop"
+        android:onClick="startButton"
         android:text="@string/startknop" />
 
 </RelativeLayout>

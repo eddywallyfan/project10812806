@@ -1,12 +1,13 @@
+/* John Wesselingh
+ * 10812806
+ * Listadapter die gebruikt wordt voor de winkelwagen.
+ * Hij neemt een Orderline als input en zet hem in dezelfde layout als het assortiment
+ */
 package nl.mprog.project10812806;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import nl.mprog.project10812806.AssortimentActivity;
 import com.squareup.picasso.Picasso;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,6 @@ public class CartAdapter extends ArrayAdapter<Orderline>{
 
 	@Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         View v = convertView;
         ViewHolder holder;
         order.get(position);
@@ -41,40 +41,43 @@ public class CartAdapter extends ArrayAdapter<Orderline>{
             v = mLayoutInflater.inflate(R.layout.list_item, parent, false);
             holder = new ViewHolder();
    
-            holder.image = (ImageView) v.findViewById(R.id.Image);
-            holder.plantnaam = (TextView) v.findViewById(R.id.PlantNaam);
-            holder.plantmaat = (TextView) v.findViewById(R.id.PlantMaat);
-            holder.plantaantal = (TextView) v.findViewById(R.id.PlantAantal);
+            // Associeer de holders met de juiste Text- en ImageView
+            holder.image = (ImageView) v.findViewById(R.id.image);
+            holder.plantname = (TextView) v.findViewById(R.id.plantName);
+            holder.plantsize = (TextView) v.findViewById(R.id.plantSize);
+            holder.plantnumber = (TextView) v.findViewById(R.id.plantStock);
             
             v.setTag(holder);
         }
            
-            String aantal = (order.get(position).aantal);
-            String naam = (order.get(position).plant_naam);
-            String maat = (order.get(position).potmaat);
-            String pic = (order.get(position).foto);
-            
-           
-            if (pic.isEmpty() ){
-            	pic = "https://www.treecommerce.nl/partijfotos/1580229.jpg";
-            }
-
-            ViewHolder hold =(ViewHolder) v.getTag();
-            Picasso.with(getContext()).load(pic).placeholder(R.drawable.pop_wtm).fit().centerInside().into(hold.image);
+        // Vraag de huidige positie van elk element op en zet ze in een String	
+        String count = (order.get(position).number);
+        String name = (order.get(position).name);
+        String size = (order.get(position).size);
+        String pic = (order.get(position).photo);
+        
+        // Als er geen foto beschikbaar is gebruik je de standaardfoto achter deze link
+        if (pic.isEmpty() ){
+        	pic = "https://www.treecommerce.nl/partijfotos/1580229.jpg";
+        }
+        
+        ViewHolder hold =(ViewHolder) v.getTag();
+        
+        // Gebruik Picasso om de foto in hold.image te laden. Met de placeholder pop_wtm
+        Picasso.with(getContext()).load(pic).placeholder(R.drawable.pop_wtm).fit().centerInside().into(hold.image);
    
-            hold.plantnaam.setText(naam);
-            hold.plantmaat.setText(maat);
-            hold.plantaantal.setText(aantal);
-            Log.i("hoi", "ordercart"+naam);
-            Log.i("hoi", "ordercart"+order.get(position).plant_naam);
-    		
+        hold.plantname.setText(name);
+        hold.plantsize.setText(size);
+        hold.plantnumber.setText(count);
+           
         return v;
     }
 
+	// ViewHolder die ervoor zorgt dat de lijst efficienter ingeladen wordt
     class ViewHolder {
         public ImageView image;
-        public TextView plantnaam;
-        public TextView plantmaat;
-        public TextView plantaantal;
+        public TextView plantname;
+        public TextView plantsize;
+        public TextView plantnumber;
     }
 }

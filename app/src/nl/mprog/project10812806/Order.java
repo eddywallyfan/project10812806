@@ -11,9 +11,8 @@ public class Order {
 	private static Order instance = null;
 	private ArrayList<Orderline> orderList = new ArrayList<Orderline>();
 	
-	
-	public static Order getInstance(){
-		
+	// Geef een instantie van het object terug
+	public static Order getInstance(){		
 		if (instance != null){		
 			return instance;
 		}
@@ -24,16 +23,19 @@ public class Order {
 		}
 	}
 	
+	// Methode om een item aan de ordeline toe te voegen
 	public void add(Orderline hup){
 		orderList.add(hup);
 	}
 	
-	public ArrayList<Orderline> getList(){
-		return orderList;
-	}
-	
+	// Verwijder een item uit de Orderline
 	public void remove(Orderline hup){
 		orderList.remove(hup);
+	}
+	
+	// Vraag de Arraylist van Orderline op
+	public ArrayList<Orderline> getList(){
+		return orderList;
 	}
 }
 

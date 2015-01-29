@@ -6,33 +6,35 @@
 package nl.mprog.project10812806;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 
 public class ShoppingCartActivity extends ActionBarActivity {
 
+	// Dit zijn de klantgegevens uit de SharedPreferences
+	protected static final String MyPREFERENCES = DataActivity.MyPREFERENCES;
+	protected static final String TAG_NAME = DataActivity.TAG_NAME;
+	protected static final String TAG_PHONE = DataActivity.TAG_PHONE;
+	protected static final String TAG_EMAIL = DataActivity.TAG_EMAIL;
+	protected static final String TAG_COMPANY = DataActivity.TAG_COMPANY;
+	protected static final String TAG_ADDRESS = DataActivity.TAG_ADDRESS;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_winkelwagen);
+		setContentView(R.layout.activity_shoppingcart);
 	    
 	    ArrayList<Orderline> orderLine = Order.getInstance().getList();
 	   
@@ -61,18 +63,37 @@ public class ShoppingCartActivity extends ActionBarActivity {
         button.setOnClickListener(new View.OnClickListener() {
         
         	public void onClick(View v) {
-        		String order = "";
-            	ArrayList<Orderline> orderList = Order.getInstance().getList();
+        		
+        		// Vraag de sharedPreferences op en zet ze in een String
+        		SharedPreferences sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+        		String prefs = "Contactpersoon: ";
+        		prefs += (sharedpreferences.getString(TAG_NAME, ""));
+        		prefs += "\nTelefoonnummer: ";
+        		prefs += (sharedpreferences.getString(TAG_PHONE, ""));
+           		prefs += "\nEmail: ";
+           		prefs += (sharedpreferences.getString(TAG_EMAIL, ""));
+           		prefs += "\nBedrijf: ";
+           		prefs += (sharedpreferences.getString(TAG_COMPANY, ""));
+           		prefs += "\nFactuuradres: ";
+           		prefs += (sharedpreferences.getString(TAG_ADDRESS, ""));
+            	
+           		String order = "";
+           		ArrayList<Orderline> orderList = Order.getInstance().getList();
 
             	for (int i = 0; i < orderList.size(); i++) {
             		Orderline orderLine = orderList.get(i);
             		order = order + orderLine.toString();
             	}
+            	
+            	// Voeg de preferences toe aan de order
+            	order = order + prefs;
         		
+            	// Hier wordt een scherm getoond waar de gebruiker een programma
+            	// kan selecteren om een email te sturen. De mail is al ingevuld met alle nodige gegevens
         		Intent i = new Intent(Intent.ACTION_SEND);
         		i.setType("message/rfc822");
         		i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"johnwes@live.nl"});
-        		i.putExtra(Intent.EXTRA_SUBJECT, "bestelling via app");
+        		i.putExtra(Intent.EXTRA_SUBJECT, "Bestelling via app");
         		i.putExtra(Intent.EXTRA_TEXT   , order);
         	
         		try {
@@ -80,26 +101,22 @@ public class ShoppingCartActivity extends ActionBarActivity {
         		} catch (android.content.ActivityNotFoundException ex) {
         		    Toast.makeText(ShoppingCartActivity.this, "Er is geen programma gevonden om een email te versturen", Toast.LENGTH_SHORT).show();
         		}
-        		setContentView(R.layout.activity_sluit);
+        		setContentView(R.layout.order_taken);
         	}
         });
 	}	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.shoppingcart, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_home) {
-			Intent intent = new Intent (this, StartschermActivity.class);
+			Intent intent = new Intent (this, MainActivity.class);
 	    	startActivity(intent);
 		}
 		if (id == R.id.action_contact) {
@@ -108,7 +125,7 @@ public class ShoppingCartActivity extends ActionBarActivity {
 		}
 		
 		if (id == R.id.action_menulist) {
-			Intent intent = new Intent (this, AssortimentActivity.class);
+			Intent intent = new Intent (this, CatalogActivity.class);
 	    	startActivity(intent);
 		}		
 		return super.onOptionsItemSelected(item);
