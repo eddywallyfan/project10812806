@@ -1,6 +1,6 @@
 /* John Wesselingh
  * 10812806
- * Class die een URL omzet tot een string: ontleend aan: Android programming: The Big Nerd Guide van Bill Phillips en Brian Hardy
+ * Class die een URL omzet tot een string: ontleend aan: Android programming: The Big Nerd Ranch Guide van Bill Phillips en Brian Hardy
  */
 package nl.mprog.project10812806;
 
